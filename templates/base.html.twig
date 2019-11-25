@@ -5,16 +5,20 @@
     <title>{% block title %}Welcome!{% endblock %}</title>
 
     {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('build/app.css') }}">
+        {{ encore_entry_link_tags('app') }}
     {% endblock %}
 
 </head>
+
+<header>
+    {% include("navbar.html.twig") %}
+</header>
 
 <body>
 {% block body %}{% endblock %}
 
 {% block javascripts %}
-    <script src="{{ asset('build/app.js') }}"></script>
+    {{ encore_entry_script_tags('app') }}
 {% endblock %}
 
 </body>

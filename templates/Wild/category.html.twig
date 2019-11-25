@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ categoryName }}{% endblock %}
+
+{% block body %}
+
+    <p>{{ category.name }}</p>
+    {% for program in programs %}
+        <div class="media">
+            <div class="media-body">
+                <h1 class="mt-0">Id: {{ program.id }} / Titre: {{ program.title }}</h1>
+                <p>{{ program.summary }}</p>
+            </div>
+        </div>
+
+    {% endfor %}
+
+{% endblock %}

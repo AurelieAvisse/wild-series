@@ -10,7 +10,7 @@ class WildController extends AbstractController
 {
 
     /**
-     * @Route("/wild/show/{slug}", requirements={"slug": "[a-z0-9\-]*"}, name="wild_index")
+     * @Route("/wild/show/{slug}", requirements={"slug": "[a-z0-9\-]*"}, name="wild_index", methods={"GET"})
      * @param string $slug
      * @return Response
      */

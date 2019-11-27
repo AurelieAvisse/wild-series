@@ -4,3 +4,123 @@
 // customize some Bootstrap variables
 $primary: black;
 $secondary: #00fff7;
+$title: white;
+
+body {
+  background-color: #565656;
+}
+
+span {
+  color: $secondary;
+}
+
+h3 {
+  color: $title;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+.btnCategories {
+  height: 3rem;
+  background-color: $secondary;
+  border: none;
+  width: 10rem;
+
+  &:hover {
+    color: white;
+  }
+}
+
+.link {
+  font-size: 1.5rem;
+  margin: 4px;
+  color: $primary;
+
+  &:hover {
+    text-decoration-color: $secondary;
+    color: $primary;
+  }
+}
+
+.card-img-top {
+  max-height: 25rem;
+}
+
+.backSeries {
+  color: #D3D3D3;
+
+  &:hover {
+    text-decoration: none;
+    color: #AAAAAA;
+  }
+}
+
+.card-title {
+  font-size: 2.2rem;
+}
+
+.card-text {
+  font-size: 1.1rem;
+}
+
+.season {
+  color: $primary;
+  margin-right: 10px;
+  text-decoration: underline;
+  text-decoration-color: $primary;
+
+  &:hover {
+    color: $primary;
+    text-decoration-color: $secondary;
+  }
+}
+
+.program {
+  background-color: whitesmoke;
+  padding: 1.5rem;
+  border-radius: 4px;
+}
+
+.descriptionProgram {
+  color: $primary;
+}
+
+
+.cardEpisodes {
+  max-height: 22rem;
+
+  > .imgEpisodeDescription {
+    max-height: 22rem;
+    opacity: 0.3;
+  }
+
+  > .card-img-overlay {
+    overflow: auto;
+  }
+}
+
+.titleEpisode, .textEpisode {
+  font-weight: bold;
+}
+
+.smallTitleEpisode {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+::-webkit-scrollbar {
+  width: 16px;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb {
+  background-clip: padding-box;
+  background-color: $secondary;
+  border-right: 10px solid rgba(0, 0, 0, 0);
+  border-top: 10px solid rgba(0, 0, 0, 0);
+  border-bottom: 10px solid rgba(0, 0, 0, 0);
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}

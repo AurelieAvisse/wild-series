@@ -3,15 +3,13 @@
 {% block body %}
 
     <h1>Bienvenue sur Wild Series</h1>
-
+    <h2>Choisissez une catégorie</h2>
     {# templates/index.html.twig #}
-    <a href="{{ path('wild_show', { 'slug': "walking-dead" }) }}">
-        Testing show() method from WildController with a real program s slug.
-    </a>
-    <br>
-    <a href="{{ path('wild_index') }}">
-        Testing index() method from WildController to view all programs.
-    </a>
+    {% for category in categories %}
 
+        <a href="{{ path('show_category', { 'categoryName': category.name }) }}">
+            {{ category.name }}
+        </a>
 
+    {% endfor %}
 {% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ programName }}{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid d-flex">
+        <h3><a href="{{ path('wild_index') }}" class="backSeries"><span>S</span>éries > </a></h3>
+        <h3 class="ml-3"><a href="{{ path('show_category', {'categoryName': program.category.name}) }}"
+                            class="backSeries">{{ program.category.name }} ></a></h3>
+        <h3 class="ml-3">{{ program.title }}</h3>
+    </div>
+
+    <div class="container-fluid d-flex justify-content-center">
+        <div class="card mb-3 mt-5" style="max-width: 50rem;">
+            <div class="row no-gutters">
+                <div class="col-md-5">
+                    <img src="{{ program.poster }}" class="card-img" alt="...">
+                </div>
+                <div class="col-md-7">
+                    <div class="card-body">
+                        <h5 class="card-title mt-2">{{ program.title }}</h5>
+                        <p class="card-text mt-4">{{ program.summary }}</p>
+                        <p class="card-text">Saisons:</p>
+                        <div class="row ml-1">
+                            {% for season in seasons %}
+                                <a href="{{ path('show_season', {'id': season.id }) }}" class="season">
+                                    {{ season.year }}
+                                </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

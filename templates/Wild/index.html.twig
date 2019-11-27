@@ -3,16 +3,58 @@
 {% block title %} All programs {% endblock %}
 
 {% block body %}
-    <h1>Toutes les séries de la table program: </h1>
-    {% for program in programs %}
-        <div>
-            <h2>{{ loop.index }} / {{ program.title }}</h2>
-            <p>{{ program.summary }}</p>
+    <div class="container-fluid d-flex">
+        <h3><span>S</span>éries</h3>
+        <!-- Button trigger modal -->
+        <button type="button" class="btnCategories ml-4 align-self-center" data-toggle="modal" data-target="#modelId">
+            Catégories
+        </button>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="modal-body text-center">
+                    <div class="container-fluid">
+                        {% for category in categories %}
+                            <a href="{{ path('show_category', { 'categoryName': category.name }) }}"
+                               class="link d-flex flex-column">
+                                {{ category.name }}
+                            </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
         </div>
-    {% else %}
-        Aucune série trouvée
-    {% endfor %}
+    </div>
+
+
+    <div class="container-fluid">
+
+        <div class="row">
+
+            {% for program in programs %}
+                <div class="col-lg-3 col-6  d-flex justify-content-around">
+                    <div class="card  mt-3" style="width: 18rem;">
+                        <a href="{{ path('show_program', {'programName': program.title }) }}">
+                            <img src="{{ program.poster }}" class="card-img-top" alt="...">
+                        </a>
+                    </div>
+                </div>
+            {% else %}
+                Aucune série trouvée
+            {% endfor %}
+
+        </div>
+
+    </div>
+
     <a href="{{ path('app_index') }}">
         Retour à l'accueil
     </a>
 {% endblock %}
+

@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Saison {{ season.year }}{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid d-flex">
+        <h3><a href="{{ path('wild_index') }}" class="backSeries"><span>S</span>éries > </a></h3>
+        <h3 class="ml-3"><a href="{{ path('show_category', {'categoryName': program.category.name}) }}"
+                            class="backSeries">{{ program.category.name }} ></a></h3>
+        <h3 class="ml-3"><a href="{{ path('show_program', {'programName': program.title}) }}"
+                            class="backSeries">{{ program.title }} ></a></h3>
+        <h3 class="ml-3">Episodes</h3>
+    </div>
+
+    <div class="ml-3 mr-3 mb-5 program">
+        <h2 class="descriptionProgram">{{ season.year }} - {{ program.title }}</h2>
+        <p class="descriptionProgram">{{ season.description }}</p>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            {% for episode in episodes %}
+                <div class="col-lg-3 col-6 d-flex justify-content-around">
+                    <div class="card bg-dark text-white cardEpisodes mb-5">
+                        <img src="{{ program.poster }}" class="card-img imgEpisodeDescription" alt="...">
+                        <div class="card-img-overlay">
+                            <h5 class="card-title titleEpisode">Episode {{ episode.number }}</h5>
+                            <p class="card-text smallTitleEpisode">{{ episode.title }}</p class="card-text">
+                            <p class="card-text textEpisode">{{ episode.synopsis }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+{% endblock %}

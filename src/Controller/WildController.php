@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Category;
+use App\Entity\Episode;
 use App\Entity\Program;
 use App\Entity\Season;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -150,6 +151,21 @@ class WildController extends AbstractController
             'season' => $season,
             'episodes' => $episodes,
             'id' => $id,
+        ]);
+    }
+
+    /**
+     * @Route("/episode/{id}", name="show_episode")
+     * @param Episode $episode
+     * @return Response
+     */
+    public function showEpisode(Episode $episode): Response
+    {
+
+        $episode->getSeason()->getProgram();
+
+        return $this->render('Wild/episode.html.twig', [
+            'episode' => $episode,
         ]);
     }
 

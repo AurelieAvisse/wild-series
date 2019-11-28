@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Episode {{ episode.number }}{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid d-flex">
+        <h3><a href="{{ path('wild_index') }}" class="backSeries"><span>S</span>éries > </a></h3>
+        <h3 class="ml-3"><a href="{{ path('show_category', {'categoryName': episode.season.program.category.name}) }}"
+                            class="backSeries">{{ episode.season.program.category.name }} ></a></h3>
+        <h3 class="ml-3"><a href="{{ path('show_program', {'programName': episode.season.program.title}) }}"
+                            class="backSeries">{{ episode.season.program.title }} ></a></h3>
+        <h3 class="ml-3"><a href="{{ path('show_season', {'id': episode.season.id}) }}"
+                            class="backSeries">Episodes ></a></h3>
+        <h3 class="ml-3">Episode {{ episode.number }}</h3>
+    </div>
+
+    <div class="ml-3 mr-3 mb-5 program">
+        <h2 class="descriptionProgram">{{ episode.season.year }} - {{ episode.season.program.title }}</h2>
+        <p class="descriptionProgram">{{ episode.season.description }}</p>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row justify-content-start">
+            <div class="col-lg-3 col-6">
+                <div class="card bg-dark text-white cardEpisodesDescription mb-5">
+                    <img src="{{ episode.season.program.poster }}" class="card-img imgEpisodeDescription" alt="...">
+                    <div class="card-img-overlay overlayDescription">
+                        <h5 class="card-title titleEpisode">Episode {{ episode.number }}</h5>
+                        <p class="card-text smallTitleEpisode">{{ episode.title }}</p class="card-text">
+                        <p class="card-text textEpisode">{{ episode.synopsis }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

@@ -89,7 +89,7 @@ h3 {
 .cardEpisodes {
   max-height: 22rem;
 
-  > .imgEpisodeDescription {
+  > .imgEpisode {
     max-height: 22rem;
     opacity: 0.3;
   }
@@ -99,8 +99,33 @@ h3 {
   }
 }
 
+.cardEpisodesDescription {
+  max-height: 22rem;
+  min-width: 35rem;
+
+  > .imgEpisodeDescription {
+    max-height: 22rem;
+    min-width: 35rem;
+    opacity: 0.3;
+  }
+
+  > .overlayDescription {
+    overflow: auto;
+  }
+}
+
 .titleEpisode, .textEpisode {
   font-weight: bold;
+}
+
+.linkEpisode {
+  color: white;
+  font-weight: bold;
+
+  &:hover {
+    color: $white;
+    text-decoration-color: $secondary;
+  }
 }
 
 .smallTitleEpisode {

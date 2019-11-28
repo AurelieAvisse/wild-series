@@ -19,15 +19,19 @@
     </div>
 
     <div class="container-fluid">
-        <div class="row">
+        <div class="row justify-content-around">
             {% for episode in episodes %}
-                <div class="col-lg-3 col-6 d-flex justify-content-around">
+                <div class="col-lg-3 col-6">
                     <div class="card bg-dark text-white cardEpisodes mb-5">
-                        <img src="{{ program.poster }}" class="card-img imgEpisodeDescription" alt="...">
-                        <div class="card-img-overlay">
+                        <img src="{{ program.poster }}" class="card-img imgEpisode" alt="...">
+                        <div class="card-img-overlay text-center mt-4">
                             <h5 class="card-title titleEpisode">Episode {{ episode.number }}</h5>
                             <p class="card-text smallTitleEpisode">{{ episode.title }}</p class="card-text">
-                            <p class="card-text textEpisode">{{ episode.synopsis }}</p>
+                            <p class="card-text textEpisode">
+                                <a href="{{ path('show_episode', {'id': episode.id}) }}" class="linkEpisode">
+                                    Voir le détail de l'épisode
+                                </a>
+                            </p>
                         </div>
                     </div>
                 </div>

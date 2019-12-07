@@ -1,0 +1,13 @@
+@import "color";
+
+.season {
+  color: $primary;
+  margin-right: 10px;
+  text-decoration: underline;
+  text-decoration-color: $primary;
+
+  &:hover {
+    color: $primary;
+    text-decoration-color: $secondary;
+  }
+}

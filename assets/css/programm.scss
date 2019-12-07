@@ -1,0 +1,20 @@
+@import "color";
+
+.backSeries {
+  color: #D3D3D3;
+
+  &:hover {
+    text-decoration: none;
+    color: #AAAAAA;
+  }
+}
+
+.program {
+  background-color: whitesmoke;
+  padding: 1.5rem;
+  border-radius: 4px;
+}
+
+.descriptionProgram {
+  color: $primary;
+}

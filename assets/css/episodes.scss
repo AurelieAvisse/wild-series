@@ -1,0 +1,48 @@
+@import "color";
+
+.cardEpisodes {
+  max-height: 22rem;
+
+  > .imgEpisode {
+    max-height: 22rem;
+    opacity: 0.3;
+  }
+
+  > .card-img-overlay {
+    overflow: auto;
+  }
+}
+
+.cardEpisodesDescription {
+  max-height: 22rem;
+  min-width: 35rem;
+
+  > .imgEpisodeDescription {
+    max-height: 22rem;
+    min-width: 35rem;
+    opacity: 0.3;
+  }
+
+  > .overlayDescription {
+    overflow: auto;
+  }
+}
+
+.titleEpisode, .textEpisode {
+  font-weight: bold;
+}
+
+.linkEpisode {
+  color: white;
+  font-weight: bold;
+
+  &:hover {
+    color: $title;
+    text-decoration-color: $secondary;
+  }
+}
+
+.smallTitleEpisode {
+  font-size: 1.5rem;
+  font-weight: bold;
+}

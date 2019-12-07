@@ -5,10 +5,25 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="{{ path('app_index') }}">Accueil <span
-                        class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="{{ path('wild_index') }}">Séries</a>
-        </div>
+
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link active" href="{{ path('app_index') }}">Accueil <span
+                            class="sr-only">(current)</span></a>
+            </li>
+            <li>
+                <a class="nav-item nav-link" href="{{ path('wild_index') }}">Séries</a>
+            </li>
+        </ul>
+
+        <ul class="navbar-nav mr-2">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('category_new') }}">
+                    <i class='fa fa-plus mr-2' style='font-size:1rem;color:#00fff7'></i>
+                    Ajouter une catégorie
+                </a>
+            </li>
+        </ul>
+
     </div>
 </nav>

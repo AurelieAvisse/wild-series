@@ -1,0 +1,12 @@
+@import "color";
+
+@mixin button {
+  height: 3rem;
+  background-color: $secondary;
+  border: none;
+  width: 10rem;
+
+  &:hover {
+    color: $title;
+  }
+}

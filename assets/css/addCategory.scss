@@ -1,0 +1,24 @@
+@import "color";
+@import "mixin";
+
+h2 {
+  color: $title;
+}
+
+.my_categories {
+  color: $title;
+  font-size: 1.4rem;
+}
+
+.add_category {
+  background-color: #868686;
+  padding: 2rem;
+}
+
+.btn_add {
+  @include button;
+}
+
+::placeholder {
+  padding: 1rem;
+}

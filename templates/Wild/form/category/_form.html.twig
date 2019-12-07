@@ -1,0 +1,9 @@
+{{ form_start(form) }}
+{{ form_errors(form) }}
+
+<div>
+    {{ form_row(form.name) }}
+</div>
+
+<button class="btn_add mt-4">{{ button|default('Ajouter') }}</button>
+{{ form_end(form) }}

@@ -13,4 +13,10 @@ const $ = require('jquery');
 
 require('bootstrap');
 
+require('select2');
+
+$('.select').select2({
+    theme: 'bootstrap4',
+});
+
 console.log('Hello Webpack Encore! Edit me in assets/js/app.js');

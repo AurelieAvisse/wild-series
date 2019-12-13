@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Program{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h2>Créer une nouvelle série</h2>
+
+        <div class="my-3">
+            {{ include('program/_form.html.twig') }}
+        </div>
+
+        <a href="{{ path('program_index') }}" class="backProgram">Retour à la liste des séries</a>
+
+    </div>
+{% endblock %}

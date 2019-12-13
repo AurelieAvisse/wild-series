@@ -1,0 +1,16 @@
+{{ form_start(form) }}
+<div id="program_title">
+    {{ form_row(form.title) }}
+</div>
+<div id="program_summary" class="mt-3">
+    {{ form_row(form.summary) }}
+</div>
+<div id="program_poster" class="mt-3">
+    {{ form_row(form.poster) }}
+</div>
+<div id="program_category" class="mt-3">
+    {{ form_row(form.category) }}
+</div>
+
+<button class="btnCategories mt-3">{{ button_label|default('Ajouter') }}</button>
+{{ form_end(form) }}

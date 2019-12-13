@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Program index{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid mx-2 mt-3">
+        <h2>Mes séries </h2>
+
+        <a href="{{ path('program_new') }}" class="addProgram">Créer une nouvelle série</a>
+
+        <div class="container-fluid d-flex justify-content-center">
+            <div class="row">
+
+                {% for program in programs %}
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card crud-program-card mb-3 mt-5" style="max-width: 50rem;">
+                            <div class="row no-gutters">
+                                <div class="col-md-5">
+                                    <img src="{{ program.poster }}" class="card-img" alt="...">
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="card-body">
+                                        <a href="{{ path('program_edit', {'id': program.id}) }}" class="actionProgram">Modifier</a>
+                                        <br>
+                                        <a href="{{ path('program_show', {'id': program.id}) }}" class="actionProgram">Supprimer</a>
+                                        <h5 class="card-title crud-program-title mt-2">{{ program.title }}</h5>
+                                        <p class="card-text crud-program-text mt-4">{{ program.summary }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+
+        {#<table class="table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Summary</th>
+                <th>Poster</th>
+                <th>actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for program in programs %}
+                <tr>
+                    <td>{{ program.id }}</td>
+                    <td>{{ program.title }}</td>
+                    <td>{{ program.summary }}</td>
+                    <td><img src="{{ program.poster }}" style="max-height: 10rem"></td>
+                    <td>
+                        <a href="{{ path('program_show', {'id': program.id}) }}">show</a>
+                        <a href="{{ path('program_edit', {'id': program.id}) }}">edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>#}
+
+    </div>
+{% endblock %}

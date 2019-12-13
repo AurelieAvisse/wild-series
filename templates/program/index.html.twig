@@ -23,7 +23,7 @@
                                     <div class="card-body">
                                         <a href="{{ path('program_edit', {'id': program.id}) }}" class="actionProgram">Modifier</a>
                                         <br>
-                                        <a href="{{ path('program_show', {'id': program.id}) }}" class="actionProgram">Supprimer</a>
+                                        {{ include('program/_delete_form.html.twig') }}
                                         <h5 class="card-title crud-program-title mt-2">{{ program.title }}</h5>
                                         <p class="card-text crud-program-text mt-4">{{ program.summary }}</p>
                                     </div>
@@ -35,36 +35,6 @@
 
             </div>
         </div>
-
-        {#<table class="table">
-            <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Summary</th>
-                <th>Poster</th>
-                <th>actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for program in programs %}
-                <tr>
-                    <td>{{ program.id }}</td>
-                    <td>{{ program.title }}</td>
-                    <td>{{ program.summary }}</td>
-                    <td><img src="{{ program.poster }}" style="max-height: 10rem"></td>
-                    <td>
-                        <a href="{{ path('program_show', {'id': program.id}) }}">show</a>
-                        <a href="{{ path('program_edit', {'id': program.id}) }}">edit</a>
-                    </td>
-                </tr>
-            {% else %}
-                <tr>
-                    <td colspan="5">no records found</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>#}
 
     </div>
 {% endblock %}

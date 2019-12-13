@@ -43,24 +43,14 @@ class ProgramController extends AbstractController
             $entityManager->persist($program);
             $entityManager->flush();
 
+            $this->addFlash('success', 'La série a été ajoutée avec succès');
+
             return $this->redirectToRoute('program_index');
         }
 
         return $this->render('program/new.html.twig', [
             'program' => $program,
             'form' => $form->createView(),
-        ]);
-    }
-
-    /**
-     * @Route("/{id}", name="program_show", methods={"GET"})
-     * @param Program $program
-     * @return Response
-     */
-    public function show(Program $program): Response
-    {
-        return $this->render('program/show.html.twig', [
-            'program' => $program,
         ]);
     }
 
@@ -77,6 +67,8 @@ class ProgramController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+
+            $this->addFlash('success', 'La série a été modifiée avec succès');
 
             return $this->redirectToRoute('program_index');
         }
@@ -95,10 +87,12 @@ class ProgramController extends AbstractController
      */
     public function delete(Request $request, Program $program): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$program->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $program->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($program);
             $entityManager->flush();
+
+            $this->addFlash('success', 'La série a été supprimée avec succès');
         }
 
         return $this->redirectToRoute('program_index');

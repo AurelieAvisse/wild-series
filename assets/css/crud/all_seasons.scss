@@ -1,0 +1,50 @@
+.details-season {
+    color: whitesmoke;
+
+    &:hover {
+        text-decoration: none;
+        color: $primary;
+    }
+}
+
+.season-year {
+    color: $primary;
+    font-size: 1rem;
+}
+
+.info-season {
+    color: whitesmoke;
+    font-size: 1.4rem;
+}
+
+.fa-pencil,
+.delete {
+    color: $secondary;
+    font-size: 2rem
+}
+
+#season_year{
+    border-radius: 0.3rem;
+    width: 30rem;
+    height: 2.4rem;
+    font-size: 1rem;
+
+    &:focus {
+        outline: none !important;
+        border-color: rgb(163, 163, 163);
+        box-shadow: 0 0 10px rgb(163, 163, 163);
+    }
+}
+
+#season_description {
+    border-radius: 0.3rem;
+    width: 30rem;
+    height: 6rem;
+    font-size: 1rem;
+
+    &:focus {
+        outline: none !important;
+        border-color: rgb(163, 163, 163);
+        box-shadow: 0 0 10px rgb(163, 163, 163);
+    }
+}

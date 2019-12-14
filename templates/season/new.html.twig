@@ -3,9 +3,19 @@
 {% block title %}New Season{% endblock %}
 
 {% block body %}
-    <h1>Create new Season</h1>
 
-    {{ include('season/_form.html.twig') }}
+    <div class="container mt-4">
+        <h2>Ajouter une saison</h2>
 
-    <a href="{{ path('season_index') }}">back to list</a>
+        <h3>{{ program.title }}</h3>
+
+        <div class="my-4">
+            {{ include('season/_form.html.twig') }}
+        </div>
+
+        <a href="{{ path('season_index') }}" class="backProgram">
+            <i class='fa fa-mail-reply mr-2'></i>
+            Retour à la liste des saisons</a>
+
+    </div>
 {% endblock %}

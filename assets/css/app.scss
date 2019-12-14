@@ -7,24 +7,25 @@
 @import "season";
 @import "addCategory";
 @import "crud/all_programs";
+@import "crud/all_seasons";
 
 body {
-  background-color: #565656;
+    background-color: #565656;
 }
 
 ::-webkit-scrollbar {
-  width: 16px;
-  background-clip: padding-box;
+    width: 16px;
+    background-clip: padding-box;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-clip: padding-box;
-  background-color: $secondary;
-  border-right: 10px solid rgba(0, 0, 0, 0);
-  border-top: 10px solid rgba(0, 0, 0, 0);
-  border-bottom: 10px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+    background-color: $secondary;
+    border-right: 10px solid rgba(0, 0, 0, 0);
+    border-top: 10px solid rgba(0, 0, 0, 0);
+    border-bottom: 10px solid rgba(0, 0, 0, 0);
 }
 
 ::-webkit-scrollbar-button {
-  display: none;
+    display: none;
 }

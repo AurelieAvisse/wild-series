@@ -4,7 +4,14 @@
 
 {% block body %}
 
-    <div class="container-fluid mx-2 mt-3">
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <div class="container-fluid mt-3">
+
         <h2>Mes séries </h2>
 
         <a href="{{ path('program_new') }}" class="addProgram">Créer une nouvelle série</a>
@@ -17,11 +24,14 @@
                         <div class="card crud-program-card mb-3 mt-5" style="max-width: 50rem;">
                             <div class="row no-gutters">
                                 <div class="col-md-5">
-                                    <img src="{{ program.poster }}" class="card-img" alt="...">
+                                    <a href="{{ path('show_program', {'programName': program.title}) }}">
+                                        <img src="{{ program.poster }}" class="card-img" alt="...">
+                                    </a>
                                 </div>
                                 <div class="col-md-7">
                                     <div class="card-body">
-                                        <a href="{{ path('program_edit', {'id': program.id}) }}" class="actionProgram">Modifier</a>
+                                        <a href="{{ path('program_edit', {'id': program.id}) }}"
+                                           class="actionProgram">Modifier</a>
                                         <br>
                                         {{ include('program/_delete_form.html.twig') }}
                                         <h5 class="card-title crud-program-title mt-2">{{ program.title }}</h5>

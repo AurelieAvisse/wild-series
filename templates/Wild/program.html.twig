@@ -25,7 +25,7 @@
                         <div class="row ml-1">
                             {% for season in seasons %}
                                 <a href="{{ path('show_season', {'id': season.id }) }}" class="season">
-                                    {{ season.year }}
+                                   -> {{ season.year }}
                                 </a>
                             {% endfor %}
                         </div>

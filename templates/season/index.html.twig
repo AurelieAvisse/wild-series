@@ -3,35 +3,43 @@
 {% block title %}Season index{% endblock %}
 
 {% block body %}
-    <h1>Season index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Year</th>
-                <th>Description</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for season in seasons %}
-            <tr>
-                <td>{{ season.id }}</td>
-                <td>{{ season.year }}</td>
-                <td>{{ season.description }}</td>
-                <td>
-                    <a href="{{ path('season_show', {'id': season.id}) }}">show</a>
-                    <a href="{{ path('season_edit', {'id': season.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
 
-    <a href="{{ path('season_new') }}">Create new</a>
+    <div class="container mt-3">
+        <h2>Toutes les saisons</h2>
+
+        <div>
+            {% for category in categories %}
+                <h3>{{ category.name }}</h3>
+
+                <div class="row">
+
+                    {% for program in category.programs %}
+                        <div class="col-lg-3 col-md-6 mb-4 align-content-center">
+                            <h5>
+                                <span>__</span> {{ program.title }}
+                            </h5>
+                            <a href="{{ path('season_new', {'id': program.id}) }}" class="addProgram">Ajouter une
+                                saison</a>
+
+                            {% for season in program.seasons %}
+                                <div>{{ season.year }}
+                                    <a href="{{ path('season_show', {'id': season.id}) }}" class="ml-2 details-season">+
+                                        de détails</a>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
 {% endblock %}

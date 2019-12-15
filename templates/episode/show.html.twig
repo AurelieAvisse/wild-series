@@ -3,32 +3,26 @@
 {% block title %}Episode{% endblock %}
 
 {% block body %}
-    <h1>Episode</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ episode.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ episode.title }}</td>
-            </tr>
-            <tr>
-                <th>Number</th>
-                <td>{{ episode.number }}</td>
-            </tr>
-            <tr>
-                <th>Synopsis</th>
-                <td>{{ episode.synopsis }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="container mt-4">
+        <div class="d-flex mt-3">
+            <h3 class="mt-0">{{ episode.season.program.title }} - {{ episode.season.year }}</h3>
+            <a href="{{ path('episode_edit', {'id': episode.id}) }}"
+               class="actionSeason mx-4">
+                <i class='fa fa-pencil'></i>
+            </a>
+            {{ include('episode/_delete_form.html.twig') }}
+        </div>
 
-    <a href="{{ path('episode_index') }}">back to list</a>
+        <div class="info-season">Episode: <span class="season-year ml-3">{{ episode.number }}</span></div>
+        <div class="info-season">Titre: <span class="season-year ml-3">{{ episode.title }}</span></div>
+        <div class="info-season">Synopsis: <span class="season-year ml-3">{{ episode.synopsis }}</span></div>
 
-    <a href="{{ path('episode_edit', {'id': episode.id}) }}">edit</a>
+        <div class="mt-4">
+            <a href="{{ path('episode_index') }}" class="backProgram">
+                <i class='fa fa-mail-reply mr-2'></i>
+                Retour à la liste des épisodes</a>
+        </div>
 
-    {{ include('episode/_delete_form.html.twig') }}
+    </div>
 {% endblock %}

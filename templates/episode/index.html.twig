@@ -3,37 +3,56 @@
 {% block title %}Episode index{% endblock %}
 
 {% block body %}
-    <h1>Episode index</h1>
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Number</th>
-                <th>Synopsis</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for episode in episodes %}
-            <tr>
-                <td>{{ episode.id }}</td>
-                <td>{{ episode.title }}</td>
-                <td>{{ episode.number }}</td>
-                <td>{{ episode.synopsis }}</td>
-                <td>
-                    <a href="{{ path('episode_show', {'id': episode.id}) }}">show</a>
-                    <a href="{{ path('episode_edit', {'id': episode.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="container mt-3">
+        <h2>Tous les épisodes</h2>
 
-    <a href="{{ path('episode_new') }}">Create new</a>
+        <div>
+            {% for category in categories %}
+                <h3>{{ category.name }}</h3>
+
+                <div class="row">
+
+                    {% for program in category.programs|sort((a, b) => a.title <=> b.title) %}
+                        <div class="col-lg-6 col-md-12 mb-5 align-content-center">
+                            <h5>
+                                <span>__</span> {{ program.title }}
+                            </h5>
+
+                            <div class="row">
+                                {% for season in program.seasons %}
+                                    <div>
+                                        <a href="{{ path('episode_new', {'id': season.id}) }}" class="addProgram">
+                                            Ajouter un épisode</a>
+                                    </div>
+                                    <div class="col-2">
+                                        <div>{{ season.year }}:</div>
+                                    </div>
+                                    <div class="col-10 d-flex flex-column">
+                                        {% for episode in season.episodes %}
+                                            <div>
+                                                {{ episode.number }} - {{ episode.title }}
+                                                <a href="{{ path('episode_show', {'id': episode.id}) }}"
+                                                   class="ml-2 details-season">+ détails</a>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+
+                                {% endfor %}
+                            </div>
+
+                        </div>
+                    {% endfor %}
+
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
 {% endblock %}

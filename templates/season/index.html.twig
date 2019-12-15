@@ -19,8 +19,8 @@
 
                 <div class="row">
 
-                    {% for program in category.programs %}
-                        <div class="col-lg-3 col-md-6 mb-4 align-content-center">
+                    {% for program in category.programs|sort((a, b) => a.title <=> b.title) %}
+                        <div class="col-lg-3 col-md-6 mb-5 align-content-center">
                             <h5>
                                 <span>__</span> {{ program.title }}
                             </h5>
@@ -29,8 +29,8 @@
 
                             {% for season in program.seasons %}
                                 <div>{{ season.year }}
-                                    <a href="{{ path('season_show', {'id': season.id}) }}" class="ml-2 details-season">+
-                                        de détails</a>
+                                    <a href="{{ path('season_show', {'id': season.id}) }}" class="ml-2 details-season">
+                                        + détails</a>
                                 </div>
                             {% endfor %}
                         </div>

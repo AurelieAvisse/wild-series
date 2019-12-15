@@ -3,9 +3,19 @@
 {% block title %}New Episode{% endblock %}
 
 {% block body %}
-    <h1>Create new Episode</h1>
 
-    {{ include('episode/_form.html.twig') }}
+    <div class="container mt-4">
+        <h1>Ajouter un épisode</h1>
 
-    <a href="{{ path('episode_index') }}">back to list</a>
+        <h3>{{ season.program.title }} - {{ season.year }}</h3>
+
+        <div class="my-4">
+            {{ include('episode/_form.html.twig') }}
+        </div>
+
+        <a href="{{ path('episode_index') }}" class="backProgram">
+            <i class='fa fa-mail-reply mr-2'></i>
+            Retour à la liste des épisodes</a>
+
+    </div>
 {% endblock %}

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use App\Entity\Program;
 use App\Form\ProgramType;
 use App\Repository\ProgramRepository;
@@ -17,13 +18,16 @@ class ProgramController extends AbstractController
 {
     /**
      * @Route("/", name="program_index", methods={"GET"})
-     * @param ProgramRepository $programRepository
      * @return Response
      */
-    public function index(ProgramRepository $programRepository): Response
+    public function index(): Response
     {
+        $categories = $this->getDoctrine()
+            ->getRepository(Category::class)
+            ->findAll();
+
         return $this->render('program/index.html.twig', [
-            'programs' => $programRepository->findAll(),
+            'categories' => $categories,
         ]);
     }
 
@@ -51,6 +55,18 @@ class ProgramController extends AbstractController
         return $this->render('program/new.html.twig', [
             'program' => $program,
             'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{id}", name="program_show", methods={"GET"})
+     * @param Program $program
+     * @return Response
+     */
+    public function show(Program $program): Response
+    {
+        return $this->render('program/show.html.twig', [
+            'program' => $program,
         ]);
     }
 

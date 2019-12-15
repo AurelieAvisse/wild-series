@@ -7,11 +7,17 @@
     <div class="container mt-4">
         <h2>Modifier une série</h2>
 
-        <div class="my-3">
+        <h3>{{ program.title }}</h3>
 
+        <div class="my-3">
             {{ include('program/_form.html.twig', {'button_label': 'Modifier'}) }}
         </div>
-        <a href="{{ path('program_index') }}" class="backProgram">Retour à la liste des séries</a>
+
+        <div class="mt-4">
+            <a href="{{ path('program_index') }}" class="backProgram">
+                <i class='fa fa-mail-reply mr-2'></i>
+                Retour à la liste des séries</a>
+        </div>
 
     </div>
 {% endblock %}

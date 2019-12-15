@@ -7,27 +7,19 @@
     }
 }
 
-.actionProgram {
-    color: $primary;
+.card-program{
+    background-color: transparent;
+    border: none;
+    width: 8rem;
 
-    &:hover {
-        text-decoration-color: $primary;
-        color: $primary;
+    .card-img-program{
+        width: 8rem;
+        height: 12rem;
     }
 }
 
-.crud-program-card {
-    max-height: 20rem;
-    overflow: scroll;
-
-    .crud-program-title {
-        font-size: 1.5rem;
-        font-weight: bold;
-    }
-
-    .crud-program-text {
-        font-size: 1rem;
-    }
+.empty {
+    color: white;
 }
 
 #program_title,

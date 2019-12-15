@@ -10,41 +10,38 @@
         </div>
     {% endfor %}
 
-    <div class="container-fluid mt-3">
+    <div class="container mt-3">
 
         <h2>Mes séries </h2>
 
-        <a href="{{ path('program_new') }}" class="addProgram">Créer une nouvelle série</a>
+        <a href="{{ path('program_new') }}" class="addProgram">Ajouter une série</a>
 
-        <div class="container-fluid d-flex justify-content-center">
-            <div class="row">
+        {% for category in categories %}
+            <h3>{{ category.name }}</h3>
 
-                {% for program in programs %}
-                    <div class="col-lg-4 col-md-6">
-                        <div class="card crud-program-card mb-3 mt-5" style="max-width: 50rem;">
-                            <div class="row no-gutters">
-                                <div class="col-md-5">
-                                    <a href="{{ path('show_program', {'programName': program.title}) }}">
-                                        <img src="{{ program.poster }}" class="card-img" alt="...">
-                                    </a>
-                                </div>
-                                <div class="col-md-7">
-                                    <div class="card-body">
-                                        <a href="{{ path('program_edit', {'id': program.id}) }}"
-                                           class="actionProgram">Modifier</a>
-                                        <br>
-                                        {{ include('program/_delete_form.html.twig') }}
-                                        <h5 class="card-title crud-program-title mt-2">{{ program.title }}</h5>
-                                        <p class="card-text crud-program-text mt-4">{{ program.summary }}</p>
-                                    </div>
+            <div class="row mb-4 mt-2">
+
+                {% for program in category.programs %}
+                    <div class="col-lg-2 col-md-4">
+
+                        <div class="card card-program">
+                            <img class="card-img-top card-img-program" src="{{ program.poster }}" alt="Card image cap">
+                            <div class="card-body card-body-program">
+                                <div class="card-text">
+                                    <a href="{{ path('program_show', {'id': program.id}) }}"
+                                       class="details-season">
+                                        + détails</a>
                                 </div>
                             </div>
                         </div>
+
                     </div>
+
                 {% endfor %}
 
             </div>
-        </div>
+
+        {% endfor %}
 
     </div>
 {% endblock %}

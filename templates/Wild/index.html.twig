@@ -38,10 +38,11 @@
         <div class="row">
 
             {% for program in programs %}
-                <div class="col-lg-3 col-6  d-flex justify-content-around">
-                    <div class="card  mt-3" style="width: 18rem;">
+                <div class="col-lg-2 col-6  d-flex justify-content-around">
+                    <div class="card  mt-3" style="width: 8rem; height: 12rem;">
                         <a href="{{ path('show_program', {'programName': program.title }) }}">
-                            <img src="{{ program.poster }}" class="card-img-top" alt="...">
+                            <img src="{{ program.poster }}" class="card-img-top" alt="..."
+                                 style="width: 8rem; height: 12rem;">
                         </a>
                     </div>
                 </div>

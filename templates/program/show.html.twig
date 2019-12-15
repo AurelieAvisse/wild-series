@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Program{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+
+        <div class="d-flex mt-3">
+            <h3 class="mt-0">{{ program.title }}</h3>
+            <a href="{{ path('program_edit', {'id': program.id}) }}"
+               class="actionSeason mx-4">
+                <i class='fa fa-pencil'></i>
+            </a>
+            {{ include('program/_delete_form.html.twig') }}
+        </div>
+
+        <div class="info-season">Description: <span class="season-year ml-3">{{ program.summary }}</span></div>
+
+        <div class="mt-4">
+            <a href="{{ path('program_index') }}" class="backProgram">
+                <i class='fa fa-mail-reply mr-2'></i>
+                Retour à la liste des séries</a>
+        </div>
+    </div>
+
+{% endblock %}

@@ -2,38 +2,42 @@
 @import "mixin";
 
 span {
-  color: $secondary;
+    color: $secondary;
 }
 
 h3 {
-  color: $title;
-  margin-top: 2%;
-  margin-bottom: 2%;
+    color: $title;
+    margin-top: 2%;
+    margin-bottom: 2%;
 }
 
 .btnCategories {
-  @include button;
+    @include button;
 }
 
 .link {
-  font-size: 1.5rem;
-  margin: 4px;
-  color: $primary;
-
-  &:hover {
-    text-decoration-color: $secondary;
+    font-size: 1.3rem;
+    margin: 4px;
     color: $primary;
-  }
+
+    &:hover {
+        text-decoration-color: $secondary;
+        color: $primary;
+    }
 }
 
 .card-img-top {
-  max-height: 25rem;
+    max-height: 25rem;
 }
 
 .card-title {
-  font-size: 2.2rem;
+    font-size: 2rem;
 }
 
 .card-text {
-  font-size: 1.1rem;
+    font-size: 1rem;
+}
+
+.actor-program {
+    font-size: 1rem;
 }

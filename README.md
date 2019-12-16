@@ -10,3 +10,6 @@ https://www.loom.com/share/66964b1ffa724dfc85437b30fea23a0c
 
 # Vidéo quête 12 WildSeries - Symfony : Du CRUD ! Du CRUD ! Du CRUD !
 https://www.loom.com/share/efa577b2db59461b84f281a5719d7df7
+
+# Vidéo quête 13 WildSeries - Symfony : Doctrine relations “Many-To-Many”
+https://www.loom.com/share/808dc966cd824e188933434906378897

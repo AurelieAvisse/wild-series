@@ -24,7 +24,8 @@ class Actor
     private $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Program", inversedBy="actors")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Program", inversedBy="actors", fetch="EXTRA_LAZY")
+     * @ORM\JoinTable(name="actor_program")
      */
     private $programs;
 

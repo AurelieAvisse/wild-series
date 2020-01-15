@@ -13,3 +13,6 @@ https://www.loom.com/share/efa577b2db59461b84f281a5719d7df7
 
 # Vidéo quête 13 WildSeries - Symfony : Doctrine relations “Many-To-Many”
 https://www.loom.com/share/808dc966cd824e188933434906378897
+
+# Vidéo quête 14 WildSeries - Symfony : EntityType
+https://www.loom.com/share/eaa203740f96465cb440595df8ccb561

@@ -28,7 +28,7 @@
                             <h5 class="card-title titleEpisode">Episode {{ episode.number }}</h5>
                             <p class="card-text smallTitleEpisode">{{ episode.title }}</p class="card-text">
                             <p class="card-text textEpisode">
-                                <a href="{{ path('show_episode', {'id': episode.id}) }}" class="linkEpisode">
+                                <a href="{{ path('show_episode', {'slug': episode.slug}) }}" class="linkEpisode">
                                     Voir le détail de l'épisode
                                 </a>
                             </p>

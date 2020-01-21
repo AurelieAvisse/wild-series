@@ -37,7 +37,7 @@
                                         {% for episode in season.episodes %}
                                             <div>
                                                 {{ episode.number }} - {{ episode.title }}
-                                                <a href="{{ path('episode_show', {'id': episode.id}) }}"
+                                                <a href="{{ path('episode_show', {'slug': episode.slug}) }}"
                                                    class="ml-2 details-season">+ détails</a>
                                             </div>
                                         {% endfor %}

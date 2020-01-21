@@ -104,19 +104,19 @@ class WildController extends AbstractController
     // Méthodes qui affiche les saisons par programmes
 
     /**
-     * @Route("/program/{programName}", defaults={"programName" = null}, name="show_program")
-     * @param string|null $programName
+     * @Route("/program/{slug}", defaults={"slug" = null}, name="show_program")
+     * @param string|null $slug
      * @return Response
      */
-    public function showByProgram(?string $programName): Response
+    public function showByProgram(?string $slug): Response
     {
-        if (!$programName) {
+        if (!$slug) {
             throw  $this->createNotFoundException('No program has been sent to find a program in program\'s table.');
         }
 
         $program = $this->getDoctrine()
             ->getRepository(Program::class)
-            ->findOneBy(['title' => $programName]);
+            ->findOneBy(['slug' => $slug]);
 
         $seasons = $this->getDoctrine()
             ->getRepository(Season::class)
@@ -125,7 +125,7 @@ class WildController extends AbstractController
         return $this->render('Wild/program.html.twig', [
             'program' => $program,
             'seasons' => $seasons,
-            'programName' => $programName,
+            'slug' => $slug,
 
         ]);
     }
@@ -160,7 +160,7 @@ class WildController extends AbstractController
     }
 
     /**
-     * @Route("/episode/{id}", name="show_episode")
+     * @Route("/episode/{slug}", name="show_episode")
      * @param Episode $episode
      * @return Response
      */

@@ -2,23 +2,28 @@
 @import "mixin";
 
 h2 {
-  color: $title;
+    color: $title;
 }
 
 .my_categories {
-  color: $title;
-  font-size: 1.4rem;
+    color: $title;
+    font-size: 1.4rem;
 }
 
 .add_category {
-  background-color: #868686;
-  padding: 2rem;
+    background-color: #868686;
+    padding: 2rem;
+    height: 15rem;
 }
 
 .btn_add {
-  @include button;
+    @include button;
 }
 
 ::placeholder {
-  padding: 1rem;
+    padding: 1rem;
+}
+
+#category_name {
+    width: 25rem;
 }

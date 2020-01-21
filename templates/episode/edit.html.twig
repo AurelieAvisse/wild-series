@@ -3,17 +3,19 @@
 {% block title %}Edit Episode{% endblock %}
 
 {% block body %}
-<div class="container mt-4">
-    <h2>Modifier l'épisode</h2>
+    <div class="container mt-4">
+        <h2>Modifier l'épisode</h2>
 
-    <h3>{{ episode.season.program.title }} - {{ episode.season.year }}</h3>
+        <h3>{{ episode.season.program.title }} - {{ episode.season.year }}</h3>
 
-    {{ include('episode/_form.html.twig', {'button_label': 'Modifier'}) }}
+        {{ include('episode/_form.html.twig', {'button_label': 'Modifier'}) }}
 
-    <div class="mt-4">
-        <a href="{{ path('episode_index') }}" class="backProgram">
-            <i class='fa fa-mail-reply mr-2'></i>
-            Retour à la liste des épisodes</a>
+        <div class="mt-4">
+            <a href="{{ path('episode_index') }}" class="backProgram">
+                <i class='fa fa-mail-reply mr-2'></i>
+                Retour à la liste des épisodes</a>
+        </div>
+
     </div>
 
-    {% endblock %}
+{% endblock %}

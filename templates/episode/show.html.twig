@@ -7,7 +7,7 @@
     <div class="container mt-4">
         <div class="d-flex mt-3">
             <h3 class="mt-0">{{ episode.season.program.title }} - {{ episode.season.year }}</h3>
-            <a href="{{ path('episode_edit', {'id': episode.id}) }}"
+            <a href="{{ path('episode_edit', {'slug': episode.slug}) }}"
                class="actionSeason mx-4">
                 <i class='fa fa-pencil'></i>
             </a>

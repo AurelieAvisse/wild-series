@@ -6,6 +6,7 @@ use App\Entity\Category;
 use App\Entity\Episode;
 use App\Entity\Season;
 use App\Form\EpisodeType;
+use App\Services\Slugify;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -34,9 +35,10 @@ class EpisodeController extends AbstractController
      * @Route("/{id}/new", name="episode_new", methods={"GET","POST"})
      * @param Request $request
      * @param Season $season
+     * @param Slugify $slugify
      * @return Response
      */
-    public function new(Request $request, Season $season): Response
+    public function new(Request $request, Season $season, Slugify $slugify): Response
     {
         $episode = new Episode();
         $form = $this->createForm(EpisodeType::class, $episode);
@@ -46,6 +48,8 @@ class EpisodeController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
 
             $season->addEpisode($episode);
+
+            $episode->setSlug($slugify->generate($episode->getTitle()));
 
             $entityManager->persist($episode);
             $entityManager->flush();
@@ -63,7 +67,7 @@ class EpisodeController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="episode_show", methods={"GET"})
+     * @Route("/{slug}", name="episode_show", methods={"GET"})
      * @param Episode $episode
      * @return Response
      */
@@ -75,17 +79,20 @@ class EpisodeController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="episode_edit", methods={"GET","POST"})
+     * @Route("/{slug}/edit", name="episode_edit", methods={"GET","POST"})
      * @param Request $request
      * @param Episode $episode
+     * @param Slugify $slugify
      * @return Response
      */
-    public function edit(Request $request, Episode $episode): Response
+    public function edit(Request $request, Episode $episode, Slugify $slugify): Response
     {
         $form = $this->createForm(EpisodeType::class, $episode);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $episode->setSlug($slugify->generate($episode->getTitle()));
+
             $this->getDoctrine()->getManager()->flush();
 
             $this->addFlash('success', 'L\'épisode a été modifié avec succès');

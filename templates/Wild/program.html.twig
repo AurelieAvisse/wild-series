@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ programName }}{% endblock %}
+{% block title %}{{ program.title }}{% endblock %}
 
 {% block body %}
 
@@ -36,7 +36,7 @@
                             <div class="ml-2">
                                 {% for actor in program.actors %}
                                     <div>
-                                        <a href="{{ path('actor_index', {'id': actor.id }) }}" class="season">
+                                        <a href="{{ path('actor_index', {'slug': actor.slug }) }}" class="season">
                                             {{ actor.name }}
                                         </a>
                                     </div>

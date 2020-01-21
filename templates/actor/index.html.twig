@@ -13,13 +13,12 @@
             </div>
         </div>
 
-
         <div class="d-flex mb-5">
             <div class="actor-title">Ses films:</div>
             <div class="ml-4">
                 {% for program in actor.programs %}
-                    <a href="{{ path('show_program', {'programName': program.title }) }}" class="actor-program-title">
-                        <div>{{ program.title }}</div>
+                    <a href="{{ path('show_program', {'slug': program.slug }) }}">
+                        <div class="actor-program-title">{{ program.title }}</div>
                     </a>
                 {% endfor %}
             </div>

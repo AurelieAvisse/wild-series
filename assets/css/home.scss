@@ -1,0 +1,15 @@
+.home-title {
+    color: $title;
+    margin-top: 15%;
+}
+
+.home-span {
+    color: $secondary;
+}
+
+.home-link {
+
+    &:hover {
+        text-decoration-color: $primary;
+    }
+}

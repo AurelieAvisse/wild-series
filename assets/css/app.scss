@@ -1,6 +1,7 @@
 // the ~ allows you to reference things in node_modules
 @import "~bootstrap/scss/bootstrap";
 @import "allProgramms";
+@import "home";
 @import "programm";
 @import "color";
 @import "episodes";
@@ -13,6 +14,20 @@
 
 body {
     background-color: #565656;
+
+    .home {
+        background: url("../images/movie.jpeg") no-repeat center fixed;
+        background-size: cover;
+        position: fixed;
+        padding: 0;
+        margin: 0;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -9999;
+    }
 }
 
 ::-webkit-scrollbar {

@@ -35,6 +35,8 @@ class ActorIndexController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($actor);
             $entityManager->flush();
+
+            $this->addFlash('success', 'L\acteur a été supprimé avec succès');
         }
 
         return $this->redirectToRoute('actor_new');

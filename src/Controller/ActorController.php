@@ -44,7 +44,7 @@ class ActorController extends AbstractController
             $em->persist($actor);
             $em->flush();
 
-            $this->addFlash('success', 'La catégorie a été ajoutée avec succès');
+            $this->addFlash('success', 'L\'acteur a été ajouté avec succès');
 
             return $this->redirectToRoute('actor_new');
         }
@@ -72,6 +72,8 @@ class ActorController extends AbstractController
             $actor->setSlug($slugify->generate($actor->getName()));
 
             $this->getDoctrine()->getManager()->flush();
+
+            $this->addFlash('success', 'L\acteur a été modifié avec succès');
 
             return $this->redirectToRoute('actor_new');
         }

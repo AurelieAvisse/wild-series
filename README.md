@@ -17,5 +17,8 @@ https://www.loom.com/share/808dc966cd824e188933434906378897
 # Vidéo quête 14 WildSeries - Symfony : EntityType
 https://www.loom.com/share/eaa203740f96465cb440595df8ccb561
 
+# Vidéo quête 15 WildSeries - Symfony : Les fixtures
+https://www.loom.com/share/bed0be7f308443609043cb47cb5a27d7
+
 # Vidéo quête 16 WildSeries - Symfony : Introduction aux “Services”
 https://www.loom.com/share/a5ff392df3a5435c8e690fc189383b82

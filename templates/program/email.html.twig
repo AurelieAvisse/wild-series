@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>email</title>
+
+    <style>
+        .container {
+            background-color: #565656;
+            color: white;
+            padding: 1rem;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+        }
+
+        p {
+            font-size: 1rem;
+        }
+
+        span {
+            font-weight: bold;
+        }
+
+        img {
+            max-height: 15rem;
+            min-width: 10rem;
+        }
+
+        a:hover {
+            text-decoration-color: #00fff7;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Une nouvelle série vient d'être publiée sur Wild Séries !</h1>
+
+
+    <img src="{{ program.poster }}" class="card-img"
+         alt="{{ program.title }}">
+
+    <p>Wild Séries vient de publier une nouvelle série : <span>{{ program. title }}.</span></p>
+
+    <p>Pour accéder à la série directement sur le site, cliquez " <a
+                href="http://localhost:8000/wild/program/{{ program.slug }}" style="color: white;">ici</a> "</p>
+
+</div>
+
+</body>
+</html>

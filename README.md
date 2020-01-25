@@ -22,3 +22,6 @@ https://www.loom.com/share/bed0be7f308443609043cb47cb5a27d7
 
 # Vidéo quête 16 WildSeries - Symfony : Introduction aux “Services”
 https://www.loom.com/share/a5ff392df3a5435c8e690fc189383b82
+
+# Vidéo quête 17 WildSeries - Symfony : Envoi d’e-mail
+https://www.loom.com/share/1bcf1001b0064dd5ac5f9ccb91cee44e

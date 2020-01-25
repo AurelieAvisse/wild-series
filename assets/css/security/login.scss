@@ -1,0 +1,19 @@
+.form-label {
+    color: $title;
+}
+
+#inputEmail,
+#inputPassword {
+    width: 40rem;
+
+    &:focus {
+        outline: none !important;
+        border-color: rgb(163, 163, 163);
+        box-shadow: 0 0 10px rgb(163, 163, 163);
+    }
+}
+
+.btn-connexion {
+    @include button;
+    width: 20rem;
+}

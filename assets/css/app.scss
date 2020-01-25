@@ -10,7 +10,8 @@
 @import "crud/all_programs";
 @import "crud/all_seasons";
 @import "crud/all_episode";
-@import "actor/actor";
+@import "crud/actor/actor";
+@import "security/login";
 
 body {
     background-color: #565656;

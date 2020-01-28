@@ -22,25 +22,52 @@
 
     <div class="container-fluid">
         <div class="row justify-content-start">
-            <div class="col-lg-3 col-6">
 
-                <div class="card bg-dark text-white cardEpisodesDescription mb-5 p-2">
+            <div class="col-lg-6 col-8">
+                <div class="card bg-dark text-white cardEpisodesDescription mb-5 p-3">
                     <div class="row">
-                        <div class="col-lg-8 col-4">
+                        <div class="col-lg-8 col-8">
                             <h5 class="card-title titleEpisode">Episode {{ episode.number }}</h5>
                             <p class="card-text smallTitleEpisode">{{ episode.title }}</p>
                             <p class="card-text textEpisode">{{ episode.synopsis }}
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-4 col-4 align-items-center">
                             <img src="{{ episode.season.program.poster }}" class="card-img imgEpisodeDescription"
                                  alt="...">
                         </div>
                     </div>
                 </div>
-
             </div>
+
+            {% if app.user %}
+                <div class="col-lg-6 col-12">
+                    {{ include('comment/new.html.twig') }}
+                </div>
+
+                <div class="container comments mb-5 p-2">
+                    <h3 class="comment-title">Commentaires</h3>
+                    {% for comment in comments %}
+                        <div>
+                            {% if comment.author.email == app.user.username %}<span class="username-me">Moi</span>
+                            {% else %}<span class="username">{{ comment.author.email }}</span>{% endif %}
+                            (Vote: {{ comment.rate }}/5)
+                        </div>
+                        <div>
+                            {{ comment.comment }}
+                        </div>
+                        <div class="breaker"></div>
+
+                    {% else %}
+                        <p>Aucun commentaire</p>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <a href="{{ path('app_login') }}" class="backProgram">
+                    <p>Connectez-vous ici pour accéder aux commentaires</p>
+                </a>
+            {% endif %}
+
         </div>
     </div>
-
 
 {% endblock %}

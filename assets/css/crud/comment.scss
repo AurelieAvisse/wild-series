@@ -1,0 +1,84 @@
+.rate,
+.comment {
+    color: $title;
+    font-size: 1rem;
+}
+
+h4 {
+    color: $title;
+}
+
+.stars {
+    position: relative;
+    display: inline-block;
+    border: none;
+    font-size: 14px;
+    left: 6rem;
+    transform: translateX(-50%);
+
+    input {
+        border: 0;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        position: absolute !important;
+        clip: rect(1px 1px 1px 1px);
+        clip: rect(1px, 1px, 1px, 1px);
+        opacity: 0;
+    }
+
+    label {
+        position: relative;
+        float: right;
+        color: #C8C8C8;
+    }
+
+    label:before {
+        margin: 5px;
+        content: "\f005";
+        font-family: FontAwesome;
+        display: inline-block;
+        font-size: 1.5em;
+        color: #ccc;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+    }
+
+    input:checked ~ label:before {
+        color: $secondary;
+    }
+
+    label:hover ~ label:before {
+        color: darken($secondary, 10%)
+    }
+
+    label:hover:before {
+        color: $secondary
+    }
+}
+
+#comment_comment {
+    border-radius: 0.3rem;
+    width: 30rem;
+    height: 6rem;
+    font-size: 1rem;
+
+    &:focus {
+        outline: none !important;
+        border-color: rgb(163, 163, 163);
+        box-shadow: 0 0 10px rgb(163, 163, 163);
+    }
+}
+
+.btn-comment {
+    height: auto;
+    background-color: $secondary;
+    border: none;
+    width: 8rem;
+
+    &:hover {
+        color: grey;
+    }
+}
+

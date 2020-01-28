@@ -12,6 +12,7 @@
 @import "crud/all_episode";
 @import "crud/actor/actor";
 @import "security/login";
+@import "crud/comment";
 
 body {
     background-color: #565656;
@@ -38,7 +39,7 @@ body {
 
 ::-webkit-scrollbar-thumb {
     background-clip: padding-box;
-    background-color: $secondary;
+    background-color: grey;
     border-right: 10px solid rgba(0, 0, 0, 0);
     border-top: 10px solid rgba(0, 0, 0, 0);
     border-bottom: 10px solid rgba(0, 0, 0, 0);

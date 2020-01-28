@@ -10,11 +10,11 @@
 }
 
 .cardEpisodesDescription {
-    max-height: 22rem;
+    min-height: 15rem;
     min-width: 35rem;
 
     > .imgEpisodeDescription {
-        max-height: 22rem;
+        max-height: 15rem;
         min-width: 35rem;
         opacity: 0.3;
     }
@@ -41,4 +41,31 @@
 .smallTitleEpisode {
     font-size: 1.5rem;
     font-weight: bold;
+}
+
+.comments {
+    min-width: 20rem;
+    max-height: 25rem;
+    background-color: whitesmoke;
+    word-wrap: break-word;
+    overflow: auto;
+
+    .comment-title {
+        color: black;
+    }
+
+    .username {
+        font-weight: bold;
+        color: $primary;
+    }
+
+    .username-me {
+        font-weight: bold;
+        color: darken($secondary, 20%);
+    }
+
+    .breaker {
+        border: 1px solid gray;
+        margin-bottom: 1rem;
+    }
 }

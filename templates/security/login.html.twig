@@ -4,18 +4,18 @@
 
 {% block body %}
 
-    <div class="container my-4">
+    <div class="container my-5">
 
         <form method="post">
             {% if error %}
                 <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
             {% endif %}
 
-            <h2 class="h3 mb-3 font-weight-normal text-center">Veuillez vous connecter</h2>
+            <h2 class="mb-3 font-weight-normal text-center">Veuillez vous connecter</h2>
 
-            <div class="form-group d-flex flex-column align-items-center">
+            <div class="form-group d-flex flex-column align-items-center mt-lg-3 mt-md-5">
                 <div class="row">
-                    <div class="col">
+                    <div class="col mt-lg-1 mt-md-4">
                         <label for="inputEmail" class="form-label mt-4">Email</label>
                         <input type="email" value="{{ last_username }}" name="email" id="inputEmail"
                                class="form-control"
@@ -27,7 +27,7 @@
 
             <div class="form-group d-flex flex-column align-items-center">
                 <div class="row">
-                    <div class="col">
+                    <div class="col my-lg-1 my-md-4">
                         <label for="inputPassword" class="form-label mt-4">Mot de passe</label>
                         <input type="password" name="password" id="inputPassword" class="form-control" required>
                     </div>

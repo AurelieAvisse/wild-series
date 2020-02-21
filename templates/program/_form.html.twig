@@ -1,25 +1,39 @@
 {{ form_start(form) }}
-<div id="program_title">
-    {{ form_row(form.title) }}
-</div>
-<div id="program_summary" class="mt-3">
-    {{ form_row(form.summary) }}
-</div>
-<div id="program_poster" class="mt-3">
-    {{ form_row(form.poster) }}
-</div>
-<div id="program_category" class="mt-3">
-    {{ form_row(form.category) }}
-</div>
-<div id="program_actors" class="mt-3">
-    {{ form_row(form.actors) }}
+
+<div class="row">
+
+    <div class="col-lg-6 d-flex flex-column align-items-center">
+        <div id="program_title" class="mt-lg-3 mt-md-5">
+            {{ form_row(form.title) }}
+        </div>
+
+        <div id="program_category" class="mt-lg-3 mt-md-5">
+            {{ form_row(form.category) }}
+        </div>
+
+        <div id="program_poster" class="mt-lg-3 mt-md-5">
+            {{ form_row(form.poster) }}
+        </div>
+    </div>
+
+    <div class="col-lg-6 d-flex flex-column align-items-center">
+        <div id="program_summary" class="mt-lg-3 mt-md-5">
+            {{ form_row(form.summary) }}
+        </div>
+
+        <div id="program_actors" class="mt-lg-3 mt-md-5">
+            {{ form_row(form.actors) }}
+        </div>
+
+        <div id="" class="mb-lg-3 mb-md-5 mt-lg-4 mt-md-5">
+            <a href="{{ path('actor_new') }}" class="actor">
+                <i class='fa fa-plus fa-plus-navbar mr-2' style='font-size:1em;color:#00fff7'></i>
+                Ajouter un nouvel acteur
+            </a>
+        </div>
+    </div>
+
 </div>
 
-<div id="" class="mt-3">
-    <a href="{{ path('actor_new') }}" class="actor">
-        <i class='fa fa-plus mr-2' style='font-size:1rem;color:#00fff7'></i> Ajouter un nouvel acteur
-    </a>
-</div>
-
-<button class="btnCategories mt-3">{{ button_label|default('Ajouter') }}</button>
+<button class="button mt-3 mb-md-4 mb-lg-0 mx-auto">{{ button_label|default('Ajouter') }}</button>
 {{ form_end(form) }}

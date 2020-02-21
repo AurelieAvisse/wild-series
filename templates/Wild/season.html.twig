@@ -4,40 +4,155 @@
 
 {% block body %}
 
-    <div class="container-fluid d-flex">
-        <h3><a href="{{ path('wild_index') }}" class="backSeries"><span>S</span>éries > </a></h3>
-        <h3 class="ml-3"><a href="{{ path('show_category', {'categoryName': program.category.name}) }}"
-                            class="backSeries">{{ program.category.name }} ></a></h3>
-        <h3 class="ml-3"><a href="{{ path('show_program', {'programName': program.title}) }}"
-                            class="backSeries">{{ program.title }} ></a></h3>
-        <h3 class="ml-3">Episodes</h3>
-    </div>
-
-    <div class="ml-3 mr-3 mb-5 program">
-        <h2 class="descriptionProgram">{{ season.year }} - {{ program.title }}</h2>
-        <p class="descriptionProgram">{{ season.description }}</p>
-    </div>
-
     <div class="container-fluid">
-        <div class="row justify-content-around">
-            {% for episode in episodes %}
-                <div class="col-lg-3 col-6">
-                    <div class="card bg-dark text-white cardEpisodes mb-5">
-                        <img src="{{ program.poster }}" class="card-img imgEpisode" alt="...">
-                        <div class="card-img-overlay text-center mt-4">
-                            <h5 class="card-title titleEpisode">Episode {{ episode.number }}</h5>
-                            <p class="card-text smallTitleEpisode">{{ episode.title }}</p class="card-text">
-                            <p class="card-text textEpisode">
-                                <a href="{{ path('show_episode', {'slug': episode.slug}) }}" class="linkEpisode">
-                                    Voir le détail de l'épisode
+        <div class="row d-flex flex-wrap align-items-end mb-lg-0 mb-md-4 mx-2">
+            <h3><a href="{{ path('wild_index') }}" class="backSeries"><span>S</span>éries</a></h3>
+            <h3 class="ml-2 back-mobile"><a href="{{ path('show_category', {'categoryName': program.category.name}) }}"
+                                            class="backSeries"> > {{ program.category.name }}</a></h3>
+            <h3 class="ml-2 back-mobile"><a href="{{ path('show_program', {'slug': program.slug}) }}"
+                                            class="backSeries"> > {{ program.title }}</a></h3>
+            <h3 class="ml-2 back-mobile"> > Episodes</h3>
+        </div>
+    </div>
+
+    <!-- PC -->
+    <div class="container-fluid d-none d-lg-block p-4">
+        <div class="card text-white mb-3 program-select-season">
+
+            <div class="program-div">
+                <img src="{{ program.poster }}" class="card-img program-img" alt="..."
+                     style="height: 35rem; width: 30rem;">
+            </div>
+
+            <div class="card-img-overlay">
+                <div class="description-program">
+                    <h4 class="card-title mt-2">{{ season.year }} - {{ program.title }}</h4>
+                    <p class="card-text summary mt-4">{{ season.description }}</p>
+
+                    <div class="mt-4 ml-2">
+                        <div class="dropdown show">
+                            <a class="btn button dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Saisons
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                {% for season in program.seasons|sort((a, b) => a.year <=> b.year) %}
+                                    <a href="{{ path('show_season', {'id': season.id }) }}"
+                                       class="d-flex flex-column dropdown-text">
+                                        Saison {{ loop.index }}
+                                    </a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container-fluid mt-4">
+                    <div id="carouselExampleControls" class="carousel slide my-3" data-ride="carousel"
+                         data-interval="false">
+                        <div class="carousel-inner">
+                            {% for episode in episodes|batch(4) %}
+                                <div class="carousel-item {{ loop.first ? 'active' : '' }}">
+                                    <div class="row no-gutters">
+                                        {% for image in episode|sort((a, b) => a.number <=> b.number) %}
+                                            <div class="col d-flex justify-content-around">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <a href="{{ path('show_episode', {'slug': image.slug}) }}">
+                                                            <img src="{{ program.poster }}" class="card-img-top"
+                                                                 alt="..."
+                                                                 style="height: 15em; width: 11em;">
+                                                        </a>
+                                                        <div class="col">
+                                                            <p class="episode-number">{{ image.number }}</p>
+                                                            <p style="max-width: 10em;">{{ image.title|truncate(15, false, '...') }}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+
+                            {% endfor %}
+                        </div>
+
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                           data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                           data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- MOBILE -->
+    <div class="container-fluid d-block d-lg-none p-4">
+        <h4 class=" title-episode">{{ season.year }} - {{ program.title }}</h4>
+        <p class="summary-episode mt-4">{{ season.description }}</p>
+
+        <div class="mt-5">
+            <button type="button" class="button ml-2" data-toggle="modal"
+                    data-target="#modelId">
+                Saisons
+                <i class="fa fa-caret-down ml-3" style="font-size:1em;color:white"></i>
+            </button>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="span-modal">&times;</span>
+                    </button>
+                    <div class="modal-body text-center">
+                        <div class="container-fluid mt-5">
+                            {% for season in program.seasons|sort((a, b) => a.year <=> b.year) %}
+                                <a href="{{ path('show_season', {'id': season.id }) }}"
+                                   class="link-modal d-flex flex-column mt-3">
+                                    Saison {{ loop.index }}
                                 </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% for episode in episodes|sort((a, b) => a.number <=> b.number) %}
+            <div class="card card-episode text-white mt-5">
+                <div class="row">
+                    <div class="col-3">
+                        <a href="{{ path('show_episode', {'slug': episode.slug}) }}">
+                            <img src="{{ program.poster }}" class="card-img-left"
+                                 alt="..."
+                                 style="height: 18em; width: 14em;">
+                        </a>
+                    </div>
+                    <div class="col-9 d-flex align-items-center">
+                        <div class="card-body">
+                            <p class="episode-number">
+                                {{ episode.number }} -
+                                {{ episode.title }}
                             </p>
                         </div>
                     </div>
                 </div>
-            {% endfor %}
-        </div>
-    </div>
+            </div>
+        {% endfor %}
 
+    </div>
 
 {% endblock %}

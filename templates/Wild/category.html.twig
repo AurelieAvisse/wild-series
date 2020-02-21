@@ -4,25 +4,26 @@
 
 {% block body %}
 
-    <div class="container-fluid d-flex">
-        <h3><a href="{{ path('wild_index') }}" class="backSeries"><span>S</span>éries > </a></h3>
-        <h3 class="ml-3">{{ category.name }}</h3>
+    <div class="container-fluid">
+        <div class="row d-flex flex-wrap align-items-end mb-lg-2 mb-md-5 mx-2">
+            <h3><a href="{{ path('wild_index') }}" class="backSeries"><span>S</span>éries </a></h3>
+            <h3 class="ml-2 back-mobile"> > {{ category.name }}</h3>
+        </div>
     </div>
 
     <div class="container-fluid">
         <div class="row">
 
             {% for program in programs %}
-                <div class="col-lg-2 col-6  d-flex justify-content-around">
-                    <div class="card mt-3" style="width: 10rem; height: 14rem;">
+                <div class="col-lg-2 col-4 d-flex justify-content-around">
+                    <div class="card mt-3 card-all-programs">
                         <a href="{{ path('show_program', {'slug': program.slug }) }}">
-                            <img src="{{ program.poster }}" class="card-img-top" alt="..."
-                                 style="width: 10rem; height: 14rem;">
+                            <img src="{{ program.poster }}" class="card-img-top" alt="...">
                         </a>
                     </div>
                 </div>
             {% else %}
-                Aucune série trouvée
+                <p class="no-programs">Aucune série trouvée</p>
             {% endfor %}
 
         </div>

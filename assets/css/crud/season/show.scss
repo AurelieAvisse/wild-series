@@ -1,0 +1,7 @@
+.info-season-crud {
+    @include info-show-crud;
+}
+
+#season_description {
+    @include input_crud_description;
+}

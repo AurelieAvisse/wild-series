@@ -1,11 +1,56 @@
 @import "color";
 
-.season {
-    color: $primary;
-    margin-right: 10px;
+.program-select-season {
+    border: none;
+    background-color: $primary;
 
-    &:hover {
-        color: $primary;
-        text-decoration-color: $secondary;
+    .program-div, .program-img {
+        width: 30rem;
+        filter: brightness(45%);
     }
+
+    .program-div {
+        position: relative;
+    }
+
+    .program-div:after {
+        width: 30rem;
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: linear-gradient(to left, rgba($primary, 1) 0%, rgba($primary, 0) 60%);
+        height: 30rem;
+    }
+}
+
+.episode-number {
+    max-width: 10em;
+    margin-top: -50px;
+    font-size: 1.6rem;
+    font-weight: bold;
+
+    @include media-breakpoint-down(md) {
+        max-width: initial;
+        margin-top: 0;
+        font-size: 2.5rem;
+        font-weight: bold;
+    }
+}
+
+.title-episode {
+    font-size: 3.5rem;
+}
+
+.summary-episode {
+    font-size: 1.2rem;
+    @include media-breakpoint-down(md) {
+        color: $description;
+        font-size: 2.5rem;
+    }
+}
+
+.card-episode {
+    background: transparent;
 }

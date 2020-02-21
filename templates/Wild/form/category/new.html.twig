@@ -10,21 +10,25 @@
         </div>
     {% endfor %}
 
-    <div class="container mt-4">
+    <div class="container-fluid mt-4">
         <div class="row">
 
             <div class="col-lg-6 col-md-12">
                 <h2>Mes catégories</h2>
 
-                {% for category in categories %}
-                    <div class="my_categories">
-                        {{ loop.index }}- {{ category.name }}
-                    </div>
-                {% endfor %}
+                <div class="row">
+                    {% for category in categories|batch(2) %}
+                        <div class="col-4">
+                            {% for categoryName in category %}
+                                <div class="my_categories">{{ categoryName.name }}</div>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
 
-            <div class="col-lg-6 col-md-12 add_category">
-                <h2 class="mb-3">Ajouter une catégorie</h2>
+            <div class="col-lg-5 col-md-12 mt-md-5 mt-lg-0 add_category">
+                <h2 class="mb-md-5 mb-lg-4">Ajouter une catégorie</h2>
                 {{ include('Wild/form/category/_form.html.twig') }}
             </div>
 

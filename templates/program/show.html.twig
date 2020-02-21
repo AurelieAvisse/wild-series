@@ -1,23 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Program{% endblock %}
+{% block title %}{{ program.title }}{% endblock %}
 
 {% block body %}
-    <div class="container mt-4">
+    <div class="container-fluid mt-4">
 
         <div class="d-flex mt-3">
-            <h3 class="mt-0">{{ program.title }}</h3>
+            <h2 class="mt-0">{{ program.title }}</h2>
             <a href="{{ path('program_edit', {'slug': program.slug}) }}"
-               class="actionSeason mx-4">
-                <i class='fa fa-pencil'></i>
+               class="mx-lg-4 mx-md-5">
+                <i class='fa fa-pencil icon-crud'></i>
             </a>
             {{ include('program/_delete_form.html.twig') }}
         </div>
 
-        <div class="info-season">Description: <span class="season-year ml-3">{{ program.summary }}</span></div>
+        <h4 class="my-lg-4 my-md-5">Description: <span class="info-program-crud ml-2">{{ program.summary }}</span></h4>
 
-        <div class="mt-4">
-            <a href="{{ path('program_index') }}" class="backProgram">
+        <div>
+            <a href="{{ path('program_index') }}" class="back_crud">
                 <i class='fa fa-mail-reply mr-2'></i>
                 Retour à la liste des séries</a>
         </div>

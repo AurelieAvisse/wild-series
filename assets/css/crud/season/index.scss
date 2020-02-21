@@ -1,0 +1,6 @@
+@import "show";
+@import "new";
+
+.details-crud {
+    @include details_crud;
+}

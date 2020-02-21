@@ -1,20 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Program{% endblock %}
+{% block title %}Modifier {{ program.title }}{% endblock %}
 
 {% block body %}
 
-    <div class="container mt-4">
+    <div class="container-fluid mt-4">
         <h2>Modifier une série</h2>
 
-        <h3>{{ program.title }}</h3>
+        <h3 class="mt-lg-4 mt-md-5">{{ program.title }}</h3>
 
         <div class="my-3">
             {{ include('program/_form.html.twig', {'button_label': 'Modifier'}) }}
         </div>
 
         <div class="mt-4">
-            <a href="{{ path('program_index') }}" class="backProgram">
+            <a href="{{ path('program_index') }}" class="back_crud">
                 <i class='fa fa-mail-reply mr-2'></i>
                 Retour à la liste des séries</a>
         </div>

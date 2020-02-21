@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Episodes{% endblock %}
+
+{% block body %}
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <div class="container-fluid mt-3">
+        <h2>Tous les épisodes</h2>
+
+        <h4 class="mt-lg-4 mt-md-5">{{ program.title }}</h4>
+
+        <div class="row">
+            {% for season in seasons|sort((a, b) => a.year <=> b.year) %}
+                <div class="col-lg-6">
+                    <div class="my-lg-4 my-md-5">
+
+                        <h5 class="text-white">
+                            Saison {{ loop.index }} ({{ season.year }})
+                        </h5>
+
+                        <div class="mb-lg-2 mb-md-3">
+                            <a href="{{ path('episode_new', {'id': season.id}) }}" class="add-crud">
+                                <i class='fa fa-plus fa-plus-navbar mr-2' style='font-size:1em;color:#00fff7'></i>
+                                Ajouter un épisode
+                            </a>
+                        </div>
+
+                        {% for episode in season.episodes|sort((a, b) => a.number <=> b.number) %}
+                            <div class="episode-title">
+                                Episode {{ episode.number }} - {{ episode.title }}
+                                <a href="{{ path('episode_show', {'slug': episode.slug}) }}"
+                                   class="ml-2 details-crud">+ détails</a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="my-5">
+            <a href="{{ path('episode_index') }}" class="back_crud">
+                <i class='fa fa-mail-reply mr-2'></i>
+                Retour à la liste des séries</a>
+        </div>
+
+        {#
+
+                                    <div class="col-10 d-flex flex-column">
+                                        {% for episode in season.episodes %}
+                                            <div>
+                                                {{ episode.number }} - {{ episode.title }}
+                                                <a href="{{ path('episode_show', {'slug': episode.slug}) }}"
+                                                   class="ml-2 details-season">+ détails</a>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+
+           #}
+
+    </div>
+
+{% endblock %}

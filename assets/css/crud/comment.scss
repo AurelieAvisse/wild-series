@@ -1,11 +1,19 @@
-.rate,
-.comment {
-    color: $title;
+.rate {
+    color: yellow;
     font-size: 1rem;
+
+    @include media-breakpoint-down(md) {
+        font-size: 2rem;
+    }
 }
 
-h4 {
-    color: $title;
+.comment {
+    color: lightgreen;
+    font-size: 1rem;
+
+    @include media-breakpoint-down(md) {
+        font-size: 2rem;
+    }
 }
 
 .stars {
@@ -15,6 +23,11 @@ h4 {
     font-size: 14px;
     left: 6rem;
     transform: translateX(-50%);
+
+    @include media-breakpoint-down(md) {
+        font-size: 30px;
+        left: 10rem;
+    }
 
     input {
         border: 0;
@@ -46,15 +59,15 @@ h4 {
     }
 
     input:checked ~ label:before {
-        color: $secondary;
+        color: yellow;
     }
 
     label:hover ~ label:before {
-        color: darken($secondary, 10%)
+        color: darken(yellow, 15%)
     }
 
     label:hover:before {
-        color: $secondary
+        color: yellow;
     }
 }
 
@@ -69,16 +82,12 @@ h4 {
         border-color: rgb(163, 163, 163);
         box-shadow: 0 0 10px rgb(163, 163, 163);
     }
-}
 
-.btn-comment {
-    height: auto;
-    background-color: $secondary;
-    border: none;
-    width: 8rem;
-
-    &:hover {
-        color: grey;
+    @include media-breakpoint-down(md) {
+        width: 40rem;
+        height: 16rem;
+        font-size: 2.5rem;
     }
 }
+
 

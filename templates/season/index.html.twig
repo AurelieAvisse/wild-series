@@ -1,41 +1,32 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Season index{% endblock %}
+{% block title %}Saisons{% endblock %}
 
 {% block body %}
 
-    {% for message in app.flashes('success') %}
-        <div class="alert alert-success">
-            {{ message }}
-        </div>
-    {% endfor %}
-
-    <div class="container mt-3">
-        <h2>Toutes les saisons</h2>
+    <div class="container-fluid mt-3">
+        <h2 class="mb-lg-3 mb-md-5">Toutes les saisons</h2>
 
         <div>
-            {% for category in categories %}
-                <h3>{{ category.name }}</h3>
+            {% for season in seasons %}
+                <h3>{{ season.name }}</h3>
 
                 <div class="row">
 
-                    {% for program in category.programs|sort((a, b) => a.title <=> b.title) %}
+                    {% for program in season.programs|sort((a, b) => a.title <=> b.title) %}
                         <div class="col-lg-3 col-md-6 mb-5 align-content-center">
                             <h5>
                                 <span>__</span> {{ program.title }}
                             </h5>
-                            <a href="{{ path('season_new', {'id': program.id}) }}" class="addProgram">Ajouter une
-                                saison</a>
 
-                            {% for season in program.seasons %}
-                                <div>{{ season.year }}
-                                    <a href="{{ path('season_show', {'id': season.id}) }}" class="ml-2 details-season">
-                                        + détails</a>
-                                </div>
-                            {% endfor %}
+                            <a href="{{ path('seasons_index', {'id': program.id}) }}" class="add-crud">
+                                <i class='fa fa-eye fa-plus-navbar mr-2' style='font-size:1em;color:#00fff7'></i>
+                                Voir toutes les saisons
+                            </a>
+
                         </div>
                     {% else %}
-                        <div class="empty mb-4">Aucune série</div>
+                        <p class="mb-lg-2 mb-md-5 text-white ml-4">Aucune série</p>
                     {% endfor %}
 
                 </div>

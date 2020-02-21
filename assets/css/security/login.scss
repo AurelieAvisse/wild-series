@@ -1,16 +1,14 @@
 .form-label {
-    color: $title;
+    color: $text;
+
+    @include media-breakpoint-down(md) {
+        font-size: 2rem;
+    }
 }
 
 #inputEmail,
 #inputPassword {
-    width: 40rem;
-
-    &:focus {
-        outline: none !important;
-        border-color: rgb(163, 163, 163);
-        box-shadow: 0 0 10px rgb(163, 163, 163);
-    }
+    @include input;
 }
 
 .btn-connexion {

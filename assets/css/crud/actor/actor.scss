@@ -1,29 +1,18 @@
+@import "new";
+
 .actor-name {
     color: wheat;
-    font-size: 1.7rem;
 }
 
 .actor-title {
-    color: white;
-    font-size: 1.7rem;
+    color: $text;
 }
 
 .actor-program-title {
     color: wheat;
-    font-size: 1.7rem;
 
     &:hover {
         text-decoration-color: $primary;
         color: wheat;
     }
-}
-
-#actor_name {
-    width: 25rem;
-}
-
-.fa-pencil-actor,
-.fa-trash-actor {
-    color: $secondary;
-    font-size: 1.5rem;
 }

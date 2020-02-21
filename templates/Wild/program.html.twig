@@ -4,52 +4,125 @@
 
 {% block body %}
 
-    <div class="container-fluid d-flex">
-        <h3><a href="{{ path('wild_index') }}" class="backSeries"><span>S</span>éries > </a></h3>
-        <h3 class="ml-3"><a href="{{ path('show_category', {'categoryName': program.category.name}) }}"
-                            class="backSeries">{{ program.category.name }} ></a></h3>
-        <h3 class="ml-3">{{ program.title }}</h3>
+    <div class="container-fluid">
+        <div class="row d-flex flex-wrap align-items-end mb-lg-2 mb-md-5 mx-2">
+            <h3><a href="{{ path('wild_index') }}" class="backSeries"><span>S</span>éries</a></h3>
+            <h3 class="ml-2 back-mobile"><a href="{{ path('show_category', {'categoryName': program.category.name}) }}"
+                                            class="backSeries"> > {{ program.category.name }}</a></h3>
+            <h3 class="ml-2 back-mobile"> > {{ program.title }}</h3>
+        </div>
     </div>
 
-    <div class="container-fluid d-flex justify-content-center">
-        <div class="card mb-3 mt-4" style="max-width: 40rem;">
-            <div class="row no-gutters">
-                <div class="col-md-5">
-                    <img src="{{ program.poster }}" class="card-img" alt="...">
-                </div>
-                <div class="col-md-7">
-                    <div class="card-body">
-                        <h5 class="card-title mt-2">{{ program.title }}</h5>
-                        <p class="card-text mt-4">{{ program.summary }}</p>
-                        <div class="d-flex mr-2">
-                            <p class="card-text"><strong>Saisons:</strong>
-                                {% for season in seasons %}
-                                    <a href="{{ path('show_season', {'id': season.id }) }}" class="season">
-                                        -> {{ season.year }}
-                                    </a>
-                                {% endfor %}
-                            </p>
-                        </div>
+    <div class="container-fluid">
+        <div class="card text-white mb-3 mt-1 program-select">
 
-                        <div class="d-flex actor-program">
-                            <strong>Acteur :</strong>
-                            <div class="ml-2">
-                                {% for actor in program.actors %}
-                                    <div>
-                                        <a href="{{ path('actor_index', {'slug': actor.slug }) }}" class="season">
-                                            {{ actor.name }}
+            <!-- PC -->
+            <div class="d-none d-lg-block">
+                <div class="program-div">
+                    <img src="{{ program.poster }}" class="card-img program-img" alt="..."
+                         style="height: 30rem; width: 25rem;">
+                </div>
+
+                <div class="card-img-overlay">
+                    <div class="description-program">
+                        <h4 class="card-title mt-2">{{ program.title }}</h4>
+                        <p class="card-text summary mt-4">{{ program.summary }}</p>
+                        <p>
+                            Avec:
+                            {% for actor in program.actors %}
+                            <a href="{{ path('actor_index', {'slug': actor.slug }) }}"
+                               class="link">
+                                {{ actor.name }}
+                            </a>
+                            {% if not loop.last %},{% else %}.{% endif %}
+                            {% else %}
+                        <p>Aucun acteur pour cette série</p>
+                        {% endfor %}
+                        </p>
+
+                        <div class="mt-4 ml-3">
+                            <div class="dropdown show">
+                                <a class="btn button dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Saisons
+                                </a>
+
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    {% for season in seasons %}
+                                        <a href="{{ path('show_season', {'id': season.id }) }}"
+                                           class="d-flex flex-column dropdown-text">
+                                            Saison {{ loop.index }}
                                         </a>
-                                    </div>
-                                {% else %}
-                                    <p>Aucun acteur pour cette série</p>
-                                {% endfor %}
+                                    {% endfor %}
+                                </div>
                             </div>
                         </div>
 
                     </div>
                 </div>
             </div>
+
+            <!-- MOBILE -->
+            <div class="d-block d-lg-none">
+                <div class="program-div mx-auto">
+                    <img src="{{ program.poster }}" class="card-img program-img" alt="..."
+                         style="height: 30rem; width: 25rem;">
+                </div>
+
+                <div class="card-body">
+                    <div class="description-program">
+                        <h4 class="card-title mt-2">{{ program.title }}</h4>
+                        <p class="card-text summary mt-4">{{ program.summary }}</p>
+                        <p>
+                            Avec:
+                            {% for actor in program.actors %}
+                            <a href="{{ path('actor_index', {'slug': actor.slug }) }}"
+                               class="link">
+                                {{ actor.name }}
+                            </a>
+                            {% if not loop.last %},{% else %}.{% endif %}
+                            {% else %}
+                        <p>Aucun acteur pour cette série</p>
+                        {% endfor %}
+                        </p>
+
+                        <div class="d-block d-lg-none mt-5">
+                            <button type="button" class="button ml-4" data-toggle="modal"
+                                    data-target="#modelId">
+                                Saisons
+                                <i class="fa fa-caret-down ml-3" style="font-size:1em;color:white"></i>
+                            </button>
+                        </div>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+                             aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true" class="span-modal">&times;</span>
+                                    </button>
+                                    <div class="modal-body text-center">
+                                        <div class="container-fluid mt-5">
+                                            {% for season in seasons %}
+                                                <a href="{{ path('show_season', {'id': season.id }) }}"
+                                                   class="link-modal d-flex flex-column mt-3">
+                                                    Saison {{ loop.index }}
+                                                </a>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
         </div>
     </div>
+
 
 {% endblock %}

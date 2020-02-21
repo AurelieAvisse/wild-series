@@ -16,18 +16,41 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class SeasonController extends AbstractController
 {
+
     /**
      * @Route("/", name="season_index", methods={"GET"})
      * @return Response
      */
     public function index(): Response
     {
-        $categories = $this->getDoctrine()
+        $seasons = $this->getDoctrine()
             ->getRepository(Category::class)
             ->findAll();
 
         return $this->render('season/index.html.twig', [
-            'categories' => $categories,
+            'seasons' => $seasons,
+        ]);
+    }
+
+    /**
+     * @Route("/{id}/all", name="seasons_index", methods={"GET"})
+     * @param int|null $id
+     * @return Response
+     */
+    public function indexAllSeasons(?int $id): Response
+    {
+
+        $program = $this->getDoctrine()
+            ->getRepository(Program::class)
+            ->findOneBy(['id' => $id]);
+
+        $seasons = $this->getDoctrine()
+            ->getRepository(Season::class)
+            ->findBy(['program' => $id]);
+
+        return $this->render('season/indexAll.html.twig', [
+            'seasons' => $seasons,
+            'program' => $program
         ]);
     }
 
@@ -53,7 +76,9 @@ class SeasonController extends AbstractController
 
             $this->addFlash('success', 'La saison a été ajoutée avec succès');
 
-            return $this->redirectToRoute('season_index');
+            return $this->redirectToRoute('seasons_index', [
+                'id' => $program->getId()
+            ]);
         }
 
         return $this->render('season/new.html.twig', [
@@ -91,7 +116,9 @@ class SeasonController extends AbstractController
 
             $this->addFlash('success', 'La saison a été modifiée avec succès');
 
-            return $this->redirectToRoute('season_index');
+            return $this->redirectToRoute('seasons_index', [
+                'id' => $season->getProgram()->getId()
+            ]);
         }
 
         return $this->render('season/edit.html.twig', [
@@ -116,6 +143,8 @@ class SeasonController extends AbstractController
             $this->addFlash('success', 'La saison a été supprimée avec succès');
         }
 
-        return $this->redirectToRoute('season_index');
+        return $this->redirectToRoute('seasons_index', [
+            'id' => $season->getProgram()->getId()
+        ]);
     }
 }

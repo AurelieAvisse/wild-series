@@ -1,0 +1,25 @@
+.navbar {
+
+    @include media-breakpoint-down(md) {
+        min-height: 160px;
+
+        .navbar-brand {
+            font-size: 4rem;
+        }
+
+        .navbar-toggler-icon {
+            height: 80px;
+            width: 80px;
+        }
+
+        .navbar-nav {
+            font-size: 2.5rem;
+        }
+
+        .dropdown-item {
+            font-size: 2.5rem;
+        }
+
+    }
+
+}

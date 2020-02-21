@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\Actor;
 use App\Form\ActorType;
 use App\Services\Slugify;
-use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,11 +19,10 @@ class ActorController extends AbstractController
     /**
      * @Route("/new", name="actor_new", methods={"GET","POST"})
      * @param Request $request
-     * @param ObjectManager $em
      * @param Slugify $slugify
      * @return Response
      */
-    public function new(Request $request, ObjectManager $em, Slugify $slugify): Response
+    public function new(Request $request, Slugify $slugify): Response
     {
 
         $actor = new Actor();
@@ -37,12 +35,13 @@ class ActorController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
             $actor = $form->getData();
 
             $actor->setSlug($slugify->generate($actor->getName()));
 
-            $em->persist($actor);
-            $em->flush();
+            $entityManager->persist($actor);
+            $entityManager->flush();
 
             $this->addFlash('success', 'L\'acteur a été ajouté avec succès');
 
@@ -73,7 +72,7 @@ class ActorController extends AbstractController
 
             $this->getDoctrine()->getManager()->flush();
 
-            $this->addFlash('success', 'L\acteur a été modifié avec succès');
+            $this->addFlash('success', 'L\'acteur a été modifié avec succès');
 
             return $this->redirectToRoute('actor_new');
         }

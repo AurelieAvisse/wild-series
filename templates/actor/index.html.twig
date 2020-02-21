@@ -4,21 +4,21 @@
 
 {% block body %}
 
-    <div class="container mt-4">
+    <div class="container-fluid mt-4">
 
         <div class="d-flex mb-5">
-            <div class="actor-title">Nom de l'acteur:</div>
+            <h4 class="actor-title">Nom de l'acteur:</h4>
             <div class="ml-4">
-                <div class="actor-name">{{ actor.name }}</div>
+                <h4 class="actor-name">{{ actor.name }}</h4>
             </div>
         </div>
 
         <div class="d-flex mb-5">
-            <div class="actor-title">Ses films:</div>
+            <h4 class="actor-title">Ses films:</h4>
             <div class="ml-4">
                 {% for program in actor.programs %}
-                    <a href="{{ path('show_program', {'slug': program.slug }) }}">
-                        <div class="actor-program-title">{{ program.title }}</div>
+                    <a href="{{ path('show_program', {'slug': program.slug }) }}" class="actor-program-title">
+                        <h4 class="actor-program-title">{{ program.title }}</h4>
                     </a>
                 {% endfor %}
             </div>

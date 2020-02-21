@@ -1,50 +1,26 @@
 // the ~ allows you to reference things in node_modules
 @import "~bootstrap/scss/bootstrap";
+@import "navbar";
+@import "body";
 @import "allProgramms";
 @import "home";
 @import "programm";
 @import "color";
+@import "vars";
+@import "mixin";
 @import "episodes";
 @import "season";
 @import "addCategory";
-@import "crud/all_programs";
-@import "crud/all_seasons";
-@import "crud/all_episode";
+@import "crud/alert_succes";
+@import "crud/program/all_programs";
+@import "crud/season/index";
+@import "crud/episode/index";
 @import "crud/actor/actor";
 @import "security/login";
 @import "crud/comment";
 
 body {
-    background-color: #565656;
+    background-color: $body;
 
-    .home {
-        background: url("../images/movie.jpeg") no-repeat center fixed;
-        background-size: cover;
-        position: fixed;
-        padding: 0;
-        margin: 0;
-        top: 0;
-        left: 0;
-        right: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -9999;
-    }
-}
-
-::-webkit-scrollbar {
-    width: 16px;
-    background-clip: padding-box;
-}
-
-::-webkit-scrollbar-thumb {
-    background-clip: padding-box;
-    background-color: grey;
-    border-right: 10px solid rgba(0, 0, 0, 0);
-    border-top: 10px solid rgba(0, 0, 0, 0);
-    border-bottom: 10px solid rgba(0, 0, 0, 0);
-}
-
-::-webkit-scrollbar-button {
-    display: none;
+    @include body;
 }

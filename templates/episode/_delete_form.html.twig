@@ -2,5 +2,5 @@
       onsubmit="return confirm('Etes-vous sûr de vouloir supprimer cet épisode ?');">
     <input type="hidden" name="_method" value="DELETE">
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ episode.id) }}">
-    <button class="btn p-0"><i class='fa fa-trash delete'></i></button>
+    <button class="btn p-0"><i class='fa fa-trash icon-crud delete'></i></button>
 </form>

@@ -6,38 +6,76 @@ span {
 }
 
 h3 {
-    color: $title;
     margin-top: 2%;
     margin-bottom: 2%;
+    font-size: 2em;
+
+    @include media-breakpoint-down(md) {
+        font-size: 3em;
+    }
+
 }
 
-.btnCategories {
-    @include button;
+#dropdownMenuLink::after {
+    margin-left: 2em;
 }
 
-.link {
-    font-size: 1.3rem;
-    margin: 4px;
-    color: $primary;
+.dropdown-menu {
+    background-color: rgba($primary, .7);
 
-    &:hover {
-        text-decoration-color: $secondary;
-        color: $primary;
+    .dropdown-text {
+        color: $text;
+        margin-left: 1rem;
+    }
+
+    .dropdown-item {
+        color: $text;
+
+        &:hover {
+            background-color: transparent;
+            color: grey;
+        }
     }
 }
 
-.card-img-top {
-    max-height: 25rem;
+.button {
+    @include button;
 }
 
-.card-title {
-    font-size: 2rem;
+.modal {
+    @include modal;
 }
 
-.card-text {
-    font-size: 1rem;
+
+.card-all-programs {
+    width: 10rem;
+    max-height: 14rem;
+
+    @include media-breakpoint-down(md) {
+        width: 15rem;
+        max-height: 20rem;
+    }
+
+    .card-img-top {
+        max-height: 14rem;
+
+        @include media-breakpoint-down(md) {
+            max-height: 20rem;
+        }
+
+    }
 }
 
-.actor-program {
-    font-size: 1rem;
+.no-programs {
+    @include no-programs;
+    margin-left: 1.3em;
 }
+
+.carousel-control-prev-icon {
+    margin-right: 90%;
+}
+
+.carousel-control-next-icon {
+    margin-left: 90%;
+}
+

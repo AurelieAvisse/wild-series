@@ -1,6 +1,10 @@
 .home-title {
-    color: $title;
+    color: $text;
     margin-top: 15%;
+
+    @include media-breakpoint-down(md) {
+        margin-top: 50%;
+    }
 }
 
 .home-span {
@@ -8,8 +12,10 @@
 }
 
 .home-link {
+    color: $text;
 
     &:hover {
+        color: $text;
         text-decoration-color: $primary;
     }
 }

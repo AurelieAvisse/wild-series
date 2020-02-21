@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Saisons{% endblock %}
+
+{% block body %}
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <div class="container-fluid mt-3">
+        <h2>Toutes les saisons</h2>
+
+        <h4 class="mt-lg-4 mt-md-5">{{ program.title }}</h4>
+
+        <div class="mb-lg-4 mb-md-5">
+            <a href="{{ path('season_new', {'id': program.id}) }}" class="add-crud">
+                <i class='fa fa-plus fa-plus-navbar mr-2' style='font-size:1em;color:#00fff7'></i>
+                Ajouter une saison
+            </a>
+        </div>
+
+        <div>
+            {% for season in seasons|sort((a, b) => a.year <=> b.year) %}
+                <p class="text-white">
+                    Saison {{ loop.index }} ({{ season.year }})
+                    <a href="{{ path('season_show', {'id': season.id}) }}" class="ml-2 details-crud">
+                        + détails
+                    </a>
+                </p>
+            {% endfor %}
+        </div>
+
+        <div class="my-5">
+            <a href="{{ path('season_index') }}" class="back_crud">
+                <i class='fa fa-mail-reply mr-2'></i>
+                Retour à la liste des séries</a>
+        </div>
+
+    </div>
+
+{% endblock %}

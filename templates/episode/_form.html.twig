@@ -1,14 +1,23 @@
 {{ form_start(form) }}
-<div id="episode_title">
-    {{ form_row(form.title) }}
-</div>
-<div id="episode_number" class="mt-3">
-    {{ form_row(form.number) }}
-</div>
-<div id="episode_synopsis" class="mt-3">
-    {{ form_row(form.synopsis) }}
+
+<div class="row">
+    <div id="episode_title" class="col-lg-6">
+        {{ form_row(form.title) }}
+    </div>
 </div>
 
-<button class="btnCategories mt-3">{{ button_label|default('Ajouter') }}</button>
+<div class="row">
+    <div id="episode_number" class="col-lg-6 mt-lg-3 mt-md-5">
+        {{ form_row(form.number) }}
+    </div>
+</div>
+
+<div class="row">
+    <div id="episode_synopsis" class="col-lg-6 mt-lg-3 mt-md-5">
+        {{ form_row(form.synopsis) }}
+    </div>
+</div>
+
+<button class="button mt-lg-3 mt-md-5 mb-md-4 mb-lg-0">{{ button_label|default('Ajouter') }}</button>
 {{ form_end(form) }}
 

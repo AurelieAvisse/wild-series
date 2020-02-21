@@ -89,14 +89,18 @@ class WildController extends AbstractController
         if (!$categoryName) {
             throw  $this->createNotFoundException('No category has been sent to find a program in program\'s table.');
         }
+
         $categoryName = str_replace("-", " ", $categoryName);
         $categoryName = ucwords($categoryName);
+
         $category = $this->getDoctrine()
             ->getRepository(Category::class)
             ->findOneBy(['name' => mb_strtolower($categoryName)]);
+
         $programs = $this->getDoctrine()
             ->getRepository(Program::class)
             ->findBy(['category' => $category]);
+
         return $this->render('Wild/category.html.twig', [
             'category' => $category,
             'categoryName' => $categoryName,
@@ -123,7 +127,7 @@ class WildController extends AbstractController
 
         $seasons = $this->getDoctrine()
             ->getRepository(Season::class)
-            ->findBy(['program' => $program]);
+            ->findBy(['program' => $program], ['year' => 'ASC']);
 
         return $this->render('Wild/program.html.twig', [
             'program' => $program,

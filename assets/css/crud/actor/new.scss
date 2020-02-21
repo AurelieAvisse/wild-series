@@ -1,0 +1,37 @@
+#actor_name {
+    @include input;
+    width: 30rem;
+
+    @include media-breakpoint-down(md) {
+        width: 40rem;
+    }
+}
+
+.add_actor {
+    background-color: #868686;
+    padding: 2rem;
+    min-height: 15rem;
+    max-height: 15rem;
+    width: 60%;
+
+    @include media-breakpoint-down(md) {
+        width: 100%;
+        min-height: 25rem;
+        max-height: 25rem;
+    }
+}
+
+.icon-actor {
+    font-size: 1.2rem;
+    color: $secondary;
+
+    @include media-breakpoint-down(md) {
+        font-size: 2.5rem;
+    }
+}
+
+.name-actor {
+    @include media-breakpoint-down(md) {
+        font-size: $paragraph-mobile;
+    }
+}

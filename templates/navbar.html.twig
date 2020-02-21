@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="">Wild<span>Series</span></a>
+    <a class="navbar-brand" href="{{ path('app_index') }}">Wild<span>Series</span></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -20,7 +20,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false">
-                    <i class='fa fa-plus mr-2' style='font-size:1rem;color:#00fff7'></i>
+                    <i class='fa fa-plus fa-plus-navbar mr-2' style='font-size:1em;color:#00fff7'></i>
                     Options
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -36,13 +36,13 @@
             <ul class="navbar-nav mr-4">
                 <li class="nav-item active">
                     <a class="nav-link disabled" href="">
-                        <i class='fa fa-user mr-1' style='font-size:1.5vmax;color:#00fff7'></i>
+                        <i class='fa fa-user mr-1' style='font-size:1em;color:#00fff7'></i>
                         {{ app.user.email }}
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('app_logout') }}">
-                        <i class='fa fa-unlink mr-1' style='font-size:1.5vmax;color:#00fff7'></i>
+                        <i class='fa fa-unlink mr-1' style='font-size:1em;color:#00fff7'></i>
                         Déconnexion
                     </a>
                 </li>
@@ -51,7 +51,10 @@
         {% else %}
             <ul class="navbar-nav mr-4">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('app_login') }}">Se connecter</a>
+                    <a class="nav-link" href="{{ path('app_login') }}">
+                        <i class='fa fa-unlink mr-1' style='font-size:1em;color:#00fff7'></i>
+                        Se connecter
+                    </a>
                 </li>
             </ul>
         {% endif %}

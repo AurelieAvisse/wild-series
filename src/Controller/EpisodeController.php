@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Category;
 use App\Entity\Episode;
+use App\Entity\Program;
 use App\Entity\Season;
 use App\Form\EpisodeType;
 use App\Services\Slugify;
@@ -32,6 +33,33 @@ class EpisodeController extends AbstractController
     }
 
     /**
+     * @Route("/{id}/all", name="episodes_index", methods={"GET"})
+     * @param int|null $id
+     * @return Response
+     */
+    public function indexAllEpisodes(?int $id): Response
+    {
+        $program = $this->getDoctrine()
+            ->getRepository(Program::class)
+            ->findOneBy(['id' => $id]);
+
+        $seasons = $this->getDoctrine()
+            ->getRepository(Season::class)
+            ->findBy(['program' => $id]);
+
+        $episodes = $this->getDoctrine()
+            ->getRepository(Episode::class)
+            ->findBy(['season' => $seasons]);
+
+        return $this->render('episode/indexAll.html.twig', [
+            'program' => $program,
+            'seasons' => $seasons,
+            'episodes' => $episodes
+        ]);
+
+    }
+
+    /**
      * @Route("/{id}/new", name="episode_new", methods={"GET","POST"})
      * @param Request $request
      * @param Season $season
@@ -56,7 +84,9 @@ class EpisodeController extends AbstractController
 
             $this->addFlash('success', 'L\'épisode a été ajouté avec succès');
 
-            return $this->redirectToRoute('episode_index');
+            return $this->redirectToRoute('episodes_index', [
+                'id' => $episode->getSeason()->getProgram()->getId()
+            ]);
         }
 
         return $this->render('episode/new.html.twig', [
@@ -97,7 +127,9 @@ class EpisodeController extends AbstractController
 
             $this->addFlash('success', 'L\'épisode a été modifié avec succès');
 
-            return $this->redirectToRoute('episode_index');
+            return $this->redirectToRoute('episodes_index', [
+                'id' => $episode->getSeason()->getProgram()->getId()
+            ]);
         }
 
         return $this->render('episode/edit.html.twig', [
@@ -122,6 +154,8 @@ class EpisodeController extends AbstractController
             $this->addFlash('success', 'L\'épisode a été supprimé avec succès');
         }
 
-        return $this->redirectToRoute('episode_index');
+        return $this->redirectToRoute('episodes_index', [
+            'id' => $episode->getSeason()->getProgram()->getId()
+        ]);
     }
 }

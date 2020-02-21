@@ -15,8 +15,12 @@ require('bootstrap');
 
 require('select2');
 
-$('.select').select2({
-    theme: 'bootstrap4',
+$('.select').prepend('<option selected=""></option>').select2({
+    placeholder: "Choisissez un genre ...",
+});
+
+$('.select1').select2({
+    placeholder: "Choisissez vos acteurs ...",
 });
 
 console.log('Hello Webpack Encore! Edit me in assets/js/app.js');

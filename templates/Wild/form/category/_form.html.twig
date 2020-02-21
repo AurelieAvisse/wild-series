@@ -1,9 +1,9 @@
 {{ form_start(form) }}
 {{ form_errors(form) }}
 
-<div>
+<div class="mb-md-4 mb-lg-2">
     {{ form_row(form.name) }}
 </div>
 
-<button class="btn_add mt-4">{{ button|default('Ajouter') }}</button>
+<button class="button mt-4">{{ button|default('Ajouter') }}</button>
 {{ form_end(form) }}

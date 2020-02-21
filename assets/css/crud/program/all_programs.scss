@@ -1,0 +1,26 @@
+@import "new_program";
+@import "show";
+
+.add-crud {
+    @include add-crud;
+}
+
+.details {
+    @include details_crud;
+
+    @include media-breakpoint-down(md) {
+        font-size: 1.4rem !important;
+    }
+}
+
+.card-program {
+    background-color: transparent;
+    border: none;
+    width: 8rem;
+
+    .card-img-program {
+        width: 8rem;
+        height: 12rem;
+    }
+}
+

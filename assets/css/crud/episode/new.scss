@@ -1,0 +1,8 @@
+#episode_title,
+#episode_number {
+    @include input_crud;
+}
+
+#episode_synopsis {
+    @include input_crud_description;
+}

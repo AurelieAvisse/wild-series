@@ -10,30 +10,45 @@
         </div>
     {% endfor %}
 
-    <div class="container mt-4">
-        <div class="row">
+    <div class="container-fluid my-4">
 
-            <div class="col-lg-6 col-md-12">
-                <h2>Mes acteurs</h2>
-
-                {% for actor in actors|sort((a, b) => a.name <=> b.name) %}
-                    <div class="my_categories d-flex mt-1">
-                        {{ loop.index }}- {{ actor.name }}
-                        <a href="{{ path('actor_edit', {'slug': actor.slug}) }}"
-                           class="actionSeason mx-4">
-                            <i class='fa fa-pencil fa-pencil-actor'></i>
-                        </a>
-                        {{ include('actor/_delete_form.html.twig') }}
-                    </div>
-                {% endfor %}
-            </div>
-
-            <div class="col-lg-6 col-md-12 add_category">
-                <h2 class="mb-3">Ajouter un acteur</h2>
+        <div class="add_actor d-flex justify-content-center mx-auto mb-5">
+            <div>
+                <h2 class="mb-md-5 mb-lg-3">Ajouter un acteur</h2>
                 {{ include('actor/_form.html.twig') }}
             </div>
-
         </div>
+
+        <h2>Mes acteurs</h2>
+
+        {% set firstLetters = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T',
+            'U','V','W','X','Y','Z'] %}
+
+        <div class="row">
+            {% for firstletter in firstLetters %}
+                <div class="col-lg-2 col-md-4">
+                    <h3 class="mt-lg-4 mt-md-5">{{ firstletter }}</h3>
+                    {% for actor in actors %}
+                        {% if actor.name|slice(0, 1) == firstletter %}
+
+                            <div class="d-flex">
+                                {{ include('actor/_delete_form.html.twig') }}
+                                <a href="{{ path('actor_edit', {'slug': actor.slug}) }}"
+                                   class="actionSeason mx-4">
+                                    <i class='fa fa-pencil icon-actor'></i>
+                                </a>
+                            </div>
+
+                            <div class="text-white mb-2 name-actor">
+                                - {{ actor.name }}
+                                <div style="border: solid 0.5px grey;"></div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+
     </div>
 
 {% endblock %}

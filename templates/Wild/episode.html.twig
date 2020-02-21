@@ -4,70 +4,95 @@
 
 {% block body %}
 
-    <div class="container-fluid d-flex">
-        <h3><a href="{{ path('wild_index') }}" class="backSeries"><span>S</span>éries > </a></h3>
-        <h3 class="ml-3"><a href="{{ path('show_category', {'categoryName': episode.season.program.category.name}) }}"
-                            class="backSeries">{{ episode.season.program.category.name }} ></a></h3>
-        <h3 class="ml-3"><a href="{{ path('show_program', {'programName': episode.season.program.title}) }}"
-                            class="backSeries">{{ episode.season.program.title }} ></a></h3>
-        <h3 class="ml-3"><a href="{{ path('show_season', {'id': episode.season.id}) }}"
-                            class="backSeries">Episodes ></a></h3>
-        <h3 class="ml-3">Episode {{ episode.number }}</h3>
-    </div>
-
-    <div class="ml-3 mr-3 mb-5 program">
-        <h2 class="descriptionProgram">{{ episode.season.year }} - {{ episode.season.program.title }}</h2>
-        <p class="descriptionProgram">{{ episode.season.description }}</p>
-    </div>
-
     <div class="container-fluid">
-        <div class="row justify-content-start">
+        <div class="row d-flex flex-wrap align-items-end mb-lg-0 mb-md-5 mx-2">
+            <h3><a href="{{ path('wild_index') }}" class="backSeries"><span>S</span>éries</a></h3>
+            <h3 class="ml-2 back-mobile"><a
+                        href="{{ path('show_category', {'categoryName': episode.season.program.category.name}) }}"
+                        class="backSeries"> > {{ episode.season.program.category.name }}</a></h3>
+            <h3 class="ml-2 back-mobile"><a href="{{ path('show_program', {'slug': episode.season.program.slug}) }}"
+                                            class="backSeries"> > {{ episode.season.program.title }}</a></h3>
+            <h3 class="ml-2 back-mobile"><a href="{{ path('show_season', {'id': episode.season.id}) }}"
+                                            class="backSeries"> > Episodes</a></h3>
+            <h3 class="ml-2 back-mobile"> > Episode {{ episode.number }}</h3>
+        </div>
+    </div>
 
-            <div class="col-lg-6 col-8">
-                <div class="card bg-dark text-white cardEpisodesDescription mb-5 p-3">
-                    <div class="row">
-                        <div class="col-lg-8 col-8">
-                            <h5 class="card-title titleEpisode">Episode {{ episode.number }}</h5>
-                            <p class="card-text smallTitleEpisode">{{ episode.title }}</p>
-                            <p class="card-text textEpisode">{{ episode.synopsis }}
-                        </div>
-                        <div class="col-lg-4 col-4 align-items-center">
-                            <img src="{{ episode.season.program.poster }}" class="card-img imgEpisodeDescription"
-                                 alt="...">
-                        </div>
+    <div class="container-fluid p-4">
+
+        <div class=" text-white">
+            <h2 class="">{{ episode.season.year }} - {{ episode.season.program.title }}</h2>
+            <p class="summary-episode">{{ episode.season.description }}</p>
+        </div>
+
+        <div class="card card-episode text-white mt-5 d-block d-lg-none">
+            <div class="row">
+                <div class="col-3">
+                    <img src="{{ episode.season.program.poster }}" class="card-img" alt="...">
+                </div>
+                <div class="col-9 d-flex align-items-center">
+                    <div class="card-body">
+                        <p class="episode-number">
+                            {{ episode.number }} -
+                            {{ episode.title }}
+                        </p>
                     </div>
                 </div>
             </div>
+        </div>
 
-            {% if app.user %}
-                <div class="col-lg-6 col-12">
-                    {{ include('comment/new.html.twig') }}
+        <p class="mt-2 text-white d-block d-lg-none">{{ episode.synopsis }}</p>
+
+
+        <div class="card text-white mb-3 mt-1 mx-5 program-select-episode d-none d-lg-block">
+            <div class="program-div">
+                <img src="{{ episode.season.program.poster }}" class="card-img program-img" alt="..."
+                     style="height: 18rem; width: 13rem;">
+            </div>
+
+            <div class="card-img-overlay">
+                <div class="description-program-episode">
+                    <h4 class="">
+                        {{ episode.number }} -
+                        {{ episode.title }}
+                    </h4>
+                    <p class="mt-4 text-white">{{ episode.synopsis }}</p>
                 </div>
 
-                <div class="container comments mb-5 p-2">
-                    <h3 class="comment-title">Commentaires</h3>
+            </div>
+        </div>
+
+        {% if app.user %}
+            <div class="row">
+
+                <div class="col-lg-6">
+                    {% include 'comment/new.html.twig' %}
+                </div>
+
+                <div class="col-lg-6 comments my-lg-2 my-md-0">
+                    <h4 class="comment-title">Commentaires</h4>
                     {% for comment in comments %}
-                        <div>
+                        <div class="all-comments mt-4">
                             {% if comment.author.email == app.user.username %}<span class="username-me">Moi</span>
                             {% else %}<span class="username">{{ comment.author.email }}</span>{% endif %}
                             (Vote: {{ comment.rate }}/5)
                         </div>
-                        <div>
+                        <div class="all-comments mb-lg-2 mb-md-4">
                             {{ comment.comment }}
                         </div>
-                        <div class="breaker"></div>
 
                     {% else %}
-                        <p>Aucun commentaire</p>
+                        <p class="text-white">Aucun commentaire</p>
                     {% endfor %}
                 </div>
-            {% else %}
-                <a href="{{ path('app_login') }}" class="backProgram">
-                    <p>Connectez-vous ici pour accéder aux commentaires</p>
-                </a>
-            {% endif %}
+            </div>
+        {% else %}
+            <a href="{{ path('app_login') }}" class="backProgram">
+                <p class="button my-5 mx-2 p-2 text-center">Connectez-vous ici pour accéder aux commentaires</p>
+            </a>
+        {% endif %}
 
-        </div>
     </div>
+
 
 {% endblock %}

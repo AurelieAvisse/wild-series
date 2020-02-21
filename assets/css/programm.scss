@@ -1,20 +1,72 @@
 @import "color";
+@import "vars";
 
 .backSeries {
-  color: #D3D3D3;
+    color: #D3D3D3;
 
-  &:hover {
-    text-decoration: none;
-    color: #AAAAAA;
-  }
+    &:hover {
+        text-decoration: none;
+        color: #AAAAAA;
+    }
 }
 
-.program {
-  background-color: whitesmoke;
-  padding: 1.5rem;
-  border-radius: 4px;
+.back-mobile {
+    @include media-breakpoint-down(md) {
+        font-size: $back-mobile;
+        margin-bottom: 2.5%;
+    }
 }
 
-.descriptionProgram {
-  color: $primary;
+.modal-backdrop {
+    opacity: 0.9 !important;
+}
+
+
+.program-select {
+    border: none;
+    background-color: transparent;
+
+    .program-div, .program-img {
+        width: 25rem;
+    }
+
+    .program-div {
+        position: relative;
+    }
+
+    .program-div:after {
+        width: 25rem;
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: linear-gradient(to left, rgba($body, 1) 0%, rgba($body, 0) 60%);
+        height: 30rem;
+    }
+
+    @include media-breakpoint-down(md) {
+        .program-div:after {
+            background: linear-gradient(to bottom, transparent 80%, $body 100%),
+            linear-gradient(to top, transparent 80%, $body 100%),
+            linear-gradient(to left, transparent 80%, $body 100%),
+            linear-gradient(to right, transparent 80%, $body 100%);
+        }
+    }
+}
+
+.description-program {
+    margin-left: 30%;
+
+    @include media-breakpoint-down(md) {
+        margin: 0;
+    }
+
+    .summary {
+        color: $description;
+    }
+
+    .link {
+        color: $text;
+    }
 }

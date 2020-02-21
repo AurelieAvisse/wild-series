@@ -1,16 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Episode index{% endblock %}
+{% block title %}Episodes index{% endblock %}
 
 {% block body %}
-    {% for message in app.flashes('success') %}
-        <div class="alert alert-success">
-            {{ message }}
-        </div>
-    {% endfor %}
 
-    <div class="container mt-3">
-        <h2>Tous les épisodes</h2>
+    <div class="container-fluid mt-3">
+        <h2 class="mb-lg-3 mb-md-5">Tous les épisodes</h2>
 
         <div>
             {% for category in categories %}
@@ -19,36 +14,19 @@
                 <div class="row">
 
                     {% for program in category.programs|sort((a, b) => a.title <=> b.title) %}
-                        <div class="col-lg-6 col-md-12 mb-5 align-content-center">
+                        <div class="col-lg-3 col-md-6 mb-5 align-content-center">
                             <h5>
                                 <span>__</span> {{ program.title }}
                             </h5>
 
-                            <div class="row">
-                                {% for season in program.seasons %}
-                                    <div>
-                                        <a href="{{ path('episode_new', {'id': season.id}) }}" class="addProgram">
-                                            Ajouter un épisode</a>
-                                    </div>
-                                    <div class="col-2">
-                                        <div>{{ season.year }}:</div>
-                                    </div>
-                                    <div class="col-10 d-flex flex-column">
-                                        {% for episode in season.episodes %}
-                                            <div>
-                                                {{ episode.number }} - {{ episode.title }}
-                                                <a href="{{ path('episode_show', {'slug': episode.slug}) }}"
-                                                   class="ml-2 details-season">+ détails</a>
-                                            </div>
-                                        {% endfor %}
-                                    </div>
-
-                                {% endfor %}
-                            </div>
+                            <a href="{{ path('episodes_index', {'id': program.id}) }}" class="add-crud">
+                                <i class='fa fa-eye fa-plus-navbar mr-2' style='font-size:1em;color:#00fff7'></i>
+                                Voir tous les épisodes
+                            </a>
 
                         </div>
                     {% else %}
-                        <div class="empty mb-4">Aucune série</div>
+                        <p class="mb-lg-2 mb-md-5 text-white ml-4">Aucune série</p>
                     {% endfor %}
 
                 </div>
@@ -56,5 +34,6 @@
         </div>
 
     </div>
+
 
 {% endblock %}

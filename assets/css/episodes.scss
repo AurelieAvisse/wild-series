@@ -1,71 +1,57 @@
 @import "color";
 
-.cardEpisodes {
-    max-height: 22rem;
+.program-select-episode {
+    border: none;
+    background-color: $primary;
 
-    > .imgEpisode {
-        max-height: 22rem;
-        opacity: 0.3;
-    }
-}
-
-.cardEpisodesDescription {
-    min-height: 15rem;
-    min-width: 35rem;
-
-    > .imgEpisodeDescription {
-        max-height: 15rem;
-        min-width: 35rem;
-        opacity: 0.3;
+    .description-program-episode {
+        margin-left: 15rem;
+        margin-top: 2.5rem;
     }
 
-    > .overlayDescription {
-        overflow: auto;
-    }
-}
-
-.titleEpisode, .textEpisode {
-    font-weight: bold;
-}
-
-.linkEpisode {
-    color: white;
-    font-weight: bold;
-
-    &:hover {
-        color: $title;
-        text-decoration-color: $secondary;
-    }
-}
-
-.smallTitleEpisode {
-    font-size: 1.5rem;
-    font-weight: bold;
 }
 
 .comments {
     min-width: 20rem;
     max-height: 25rem;
-    background-color: whitesmoke;
     word-wrap: break-word;
     overflow: auto;
 
     .comment-title {
-        color: black;
-    }
-
-    .username {
-        font-weight: bold;
-        color: $primary;
+        color: $text;
     }
 
     .username-me {
         font-weight: bold;
-        color: darken($secondary, 20%);
+        color: red;
+        font-size: 1rem;
+        @include media-breakpoint-down(md) {
+            font-weight: bold;
+            color: red;
+            font-size: 2.2rem;
+        }
     }
 
-    .breaker {
-        border: 1px solid gray;
-        margin-bottom: 1rem;
+    .username {
+        font-weight: bold;
+        color: lightblue;
+        font-size: 1rem;
+        @include media-breakpoint-down(md) {
+            font-weight: bold;
+            color: lightblue;
+            font-size: 2.2rem;
+        }
     }
+
+    .all-comments {
+        font-size: 1rem;
+        color: $text;
+        @include media-breakpoint-down(md) {
+            font-size: 2.2rem;
+            color: $text;
+        }
+
+
+    }
+
 }

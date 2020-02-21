@@ -41,9 +41,10 @@ class ProgramType extends AbstractType
             ])
             ->add('category', null, [
                 'required' => true,
+                'expanded' => false,
+                'multiple' => false,
                 'label' => false,
                 'attr' => ['class' => 'select'],
-                'placeholder' => 'Choisissez votre catégorie..',
                 'query_builder' => function (CategoryRepository $category) {
                     return $category->createQueryBuilder('c')->orderBy('c.name', 'ASC');
                 },
@@ -56,7 +57,7 @@ class ProgramType extends AbstractType
                 'label' => false,
                 'expanded' => false,
                 'multiple' => true,
-                'attr' => ['class' => 'select', 'data-placeholder' => 'Choisissez vos acteurs..'],
+                'attr' => ['class' => 'select1'],
                 'query_builder' => function (ActorRepository $actor) {
                     return $actor->createQueryBuilder('a')->orderBy('a.name', 'ASC');
                 },

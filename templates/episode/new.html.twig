@@ -1,19 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Episode{% endblock %}
+{% block title %}Ajouter un épisode{% endblock %}
 
 {% block body %}
 
-    <div class="container mt-4">
+    <div class="container-fluid mt-4">
         <h2>Ajouter un épisode</h2>
 
-        <h3>{{ season.program.title }} - {{ season.year }}</h3>
+        <h3 class="mt-lg-4 mt-md-5">{{ season.program.title }} - {{ season.year }}</h3>
 
-        <div class="my-4">
+        <div class="my-3">
             {{ include('episode/_form.html.twig') }}
         </div>
 
-        <a href="{{ path('episode_index') }}" class="backProgram">
+        <a href="{{ path('episodes_index', {'id': season.program.id}) }}" class="back_crud">
             <i class='fa fa-mail-reply mr-2'></i>
             Retour à la liste des épisodes</a>
 

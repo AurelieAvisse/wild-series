@@ -71,6 +71,7 @@
 
                 <div class="col-lg-6 comments my-lg-2 my-md-0">
                     <h4 class="comment-title">Commentaires</h4>
+
                     {% for comment in comments %}
                         <div class="all-comments mt-4">
                             {% if comment.author.email == app.user.username %}<span class="username-me">Moi</span>
@@ -80,12 +81,17 @@
                         <div class="all-comments mb-lg-2 mb-md-4">
                             {{ comment.comment }}
                         </div>
-
+                        {% if comment.author.email == app.user.username %}
+                        {% include 'comment/_delete_form.html.twig' %}
+                        {% endif %}
                     {% else %}
                         <p class="text-white">Aucun commentaire</p>
                     {% endfor %}
+
                 </div>
+
             </div>
+
         {% else %}
             <a href="{{ path('app_login') }}" class="backProgram">
                 <p class="button my-5 mx-2 p-2 text-center">Connectez-vous ici pour accéder aux commentaires</p>

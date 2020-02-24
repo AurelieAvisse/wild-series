@@ -17,6 +17,10 @@
     word-wrap: break-word;
     overflow: auto;
 
+    @include media-breakpoint-down(md) {
+        max-height: 50rem;
+    }
+
     .comment-title {
         color: $text;
     }
@@ -46,11 +50,11 @@
     .all-comments {
         font-size: 1rem;
         color: $text;
+
         @include media-breakpoint-down(md) {
             font-size: 2.2rem;
             color: $text;
         }
-
 
     }
 

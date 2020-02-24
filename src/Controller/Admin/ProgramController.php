@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Entity\Category;
 use App\Entity\Program;
@@ -15,7 +15,7 @@ use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/program")
+ * @Route("/admin/program")
  */
 class ProgramController extends AbstractController
 {

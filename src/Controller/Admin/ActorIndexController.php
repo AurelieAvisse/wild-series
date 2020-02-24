@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Entity\Actor;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -8,11 +8,14 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @Route("/admin/actor")
+ */
 class ActorIndexController extends AbstractController
 {
 
     /**
-     * @Route("/actor/{slug}", name="actor_index", methods={"GET"})
+     * @Route("/{slug}", name="actor_index", methods={"GET"})
      * @param Actor $actor
      * @return Response
      */

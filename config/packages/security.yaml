@@ -35,3 +35,9 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/subscriber, roles: ROLE_SUBSCRIBER }
+        - { path: ^/admin, roles: ROLE_ADMIN }
+
+    role_hierarchy:
+        ROLE_SUBSCRIBER: ROLE_USER
+        ROLE_ADMIN:  ROLE_SUBSCRIBER

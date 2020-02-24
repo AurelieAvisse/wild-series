@@ -28,3 +28,6 @@ https://www.loom.com/share/1bcf1001b0064dd5ac5f9ccb91cee44e
 
 # Vidéo quête 18 WildSeries - Symfony : Gestion des utilisateurs
 https://www.loom.com/share/6c87bdca22334cb78c5455a6603b0d9f
+
+# Vidéo quête 19 WildSeries - Symfony : Sécurisons nos routes.
+https://www.loom.com/share/84a53dbfd7e04c2fb14a69b18beec33e

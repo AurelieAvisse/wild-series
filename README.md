@@ -33,4 +33,4 @@ https://www.loom.com/share/6c87bdca22334cb78c5455a6603b0d9f
 https://www.loom.com/share/84a53dbfd7e04c2fb14a69b18beec33e
 
 # Vidéo quête 20 WildSeries - Symfony : Inscription d’un utilisateur
-https://www.loom.com/share/a3521520b4a34ddebd378e6dab6df2d0
+https://www.loom.com/share/4b3093925c1045bd97cb2bcad5ab9b29

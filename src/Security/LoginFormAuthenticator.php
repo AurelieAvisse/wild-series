@@ -68,7 +68,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 
         if (!$user) {
             // fail authentication with a custom error
-            throw new CustomUserMessageAuthenticationException('L\'e-mail est introuvable.');
+            throw new CustomUserMessageAuthenticationException('E-mail invalide ! Veuillez réessayez ou inscrivez-vous !');
         }
 
         return $user;

@@ -16,27 +16,23 @@
             </li>
         </ul>
 
-        {% if app.user %}
-            {% for role in app.user.roles %}
-                {% if role == 'ROLE_ADMIN' %}
-                    <ul class="navbar-nav mr-4">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                               data-toggle="dropdown"
-                               aria-haspopup="true" aria-expanded="false">
-                                <i class='fa fa-plus fa-plus-navbar mr-2' style='font-size:1em;color:#00fff7'></i>
-                                Options
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ path('category_new') }}">Ajouter une catégorie</a>
-                                <a class="dropdown-item" href="{{ path('program_index') }}">Ajouter une série</a>
-                                <a class="dropdown-item" href="{{ path('season_index') }}">Ajouter une saison</a>
-                                <a class="dropdown-item" href="{{ path('episode_index') }}">Ajouter un épisode</a>
-                            </div>
-                        </li>
-                    </ul>
-                {% endif %}
-            {% endfor %}
+        {% if is_granted('ROLE_ADMIN') %}
+            <ul class="navbar-nav mr-4">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <i class='fa fa-plus fa-plus-navbar mr-2' style='font-size:1em;color:#00fff7'></i>
+                        Options
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ path('category_new') }}">Ajouter une catégorie</a>
+                        <a class="dropdown-item" href="{{ path('program_index') }}">Ajouter une série</a>
+                        <a class="dropdown-item" href="{{ path('season_index') }}">Ajouter une saison</a>
+                        <a class="dropdown-item" href="{{ path('episode_index') }}">Ajouter un épisode</a>
+                    </div>
+                </li>
+            </ul>
         {% endif %}
 
         {% if app.user %}
@@ -47,21 +43,39 @@
                         {{ app.user.email }}
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('app_logout') }}">
+            </ul>
+            <ul class="navbar-nav mr-4">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
                         <i class='fa fa-unlink mr-1' style='font-size:1em;color:#00fff7'></i>
-                        Déconnexion
+                        Mon compte
                     </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ path('profile_index', {'id': app.user.id}) }}">
+                            Mon profil
+                        </a>
+                        <a class="dropdown-item" href="{{ path('app_logout') }}">
+                            Déconnexion
+                        </a>
+                    </div>
                 </li>
             </ul>
 
         {% else %}
             <ul class="navbar-nav mr-4">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('app_login') }}">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
                         <i class='fa fa-unlink mr-1' style='font-size:1em;color:#00fff7'></i>
                         Se connecter
                     </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ path('app_login') }}">Connexion</a>
+                        <a class="dropdown-item" href="{{ path('app_register') }}">Inscription</a>
+                    </div>
                 </li>
             </ul>
         {% endif %}

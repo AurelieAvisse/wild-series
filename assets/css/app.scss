@@ -16,8 +16,9 @@
 @import "crud/season/index";
 @import "crud/episode/index";
 @import "crud/actor/actor";
-@import "security/login";
 @import "crud/comment";
+@import "security/login";
+@import "security/register";
 
 body {
     background-color: $body;

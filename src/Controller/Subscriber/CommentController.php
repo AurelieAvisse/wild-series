@@ -3,7 +3,6 @@
 namespace App\Controller\Subscriber;
 
 use App\Entity\Comment;
-use App\Entity\Episode;
 use App\Form\CommentType;
 use App\Repository\CommentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

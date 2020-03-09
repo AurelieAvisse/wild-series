@@ -58,11 +58,11 @@
                     </h4>
                     <p class="mt-4 text-white">{{ episode.synopsis }}</p>
                 </div>
-
             </div>
+
         </div>
 
-        {% if app.user %}
+        {% if is_granted('ROLE_USER') %}
             <div class="row">
 
                 <div class="col-lg-6">
@@ -82,7 +82,7 @@
                             {{ comment.comment }}
                         </div>
                         {% if comment.author.email == app.user.username %}
-                        {% include 'comment/_delete_form.html.twig' %}
+                            {% include 'comment/_delete_form.html.twig' %}
                         {% endif %}
                     {% else %}
                         <p class="text-white">Aucun commentaire</p>
@@ -91,7 +91,6 @@
                 </div>
 
             </div>
-
         {% else %}
             <a href="{{ path('app_login') }}" class="backProgram">
                 <p class="button my-5 mx-2 p-2 text-center">Connectez-vous ici pour accéder aux commentaires</p>
@@ -99,6 +98,5 @@
         {% endif %}
 
     </div>
-
 
 {% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}S'inscrire{% endblock %}
+
+{% block body %}
+    <div class="container my-lg-4 my-md-5">
+
+        <h2 class="mb-3 font-weight-normal text-center">Veuillez vous inscrire</h2>
+
+        {{ form_start(registrationForm) }}
+
+        <div class="d-flex flex-column align-items-center mt-lg-3 mt-md-5">
+            <div class="row">
+                <div class="col mt-lg-1 mt-md-4">
+                    <div class="form-label mt-4">Email</div>
+                    <div id="registration_form_email">
+                        {{ form_row(registrationForm.email, { 'attr': {'class': 'form-control'} }) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex flex-column align-items-center mt-lg-1 mt-md-5">
+            <div class="row">
+                <div class="col mt-lg-1 mt-md-2">
+                    <div class="form-label mt-4">Mot de passe</div>
+                    <div id="registration_form_plainPassword_first">
+                        {{ form_row(registrationForm.plainPassword.first, { 'attr': {'class': 'form-control'} }) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex flex-column align-items-center mt-lg-1 mt-md-5">
+            <div class="row">
+                <div class="col mt-lg-1 mt-md-2">
+                    <div class="form-label mt-4">Répéter le mot de passe</div>
+                    <div id="registration_form_plainPassword_second">
+                        {{ form_row(registrationForm.plainPassword.second, { 'attr': {'class': 'form-control'} }) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-lg-4 mt-md-5">
+            <div class="d-flex justify-content-center check">J'accepte les conditions
+                <span id="registration_form_agreeTerms" class="ml-4">{{ form_row(registrationForm.agreeTerms) }}</span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center">
+                <button class="btn btn-lg btn-connexion mt-5" type="submit">
+                    S'inscrire
+                </button>
+            </div>
+        </div>
+
+        {{ form_end(registrationForm) }}
+
+    </div>
+{% endblock %}

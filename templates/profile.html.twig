@@ -1,0 +1,15 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <div class="container-fluid mt-3">
+        <h2 class="mb-lg-3 mb-md-5">Bienvenue sur votre profil</h2>
+
+        <p class="text-white">Votre e-mail: <b>{{ profile.email }}</b></p>
+
+        <a href="{{ path('app_logout') }}">
+            <button class="button mt-md-5 mt-lg-3">Me déconnecter</button>
+        </a>
+    </div>
+
+{% endblock %}

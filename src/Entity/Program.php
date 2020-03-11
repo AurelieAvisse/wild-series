@@ -5,9 +5,12 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProgramRepository")
+ * @UniqueEntity(fields={"title"}, message="Ce titre existe déjà")
  */
 class Program
 {
@@ -19,12 +22,22 @@ class Program
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
+     * @Assert\NotBlank(message="Veuillez renseigner le titre")
+     * @Assert\Length(
+     *      max = 254,
+     *      maxMessage = "Le titre doit faire moins de 255 caractères"
+     * )
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="Veuillez renseigner le sommaire")
+     * @Assert\Regex(
+     *     pattern="/^(?:(?!\b(plus belle la vie)\b).)*$/i",
+     *     message="On parle de vraies séries ici !!"
+     * )
      */
     private $summary;
 

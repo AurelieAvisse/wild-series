@@ -157,4 +157,17 @@
     @include back_crud;
 }
 
+.invalid-feedback {
+    font-size: 1rem;
+
+    @include media-breakpoint-down(md) {
+        font-size: $paragraph-mobile;
+    }
+
+    .form-error-message {
+        color: #dc3545;
+        /*color: red;*/
+    }
+}
+
 
